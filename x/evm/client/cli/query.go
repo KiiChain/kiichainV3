@@ -214,21 +214,21 @@ func CmdQueryERC20Payload() *cobra.Command {
 			switch args[0] {
 			case "transfer":
 				if len(args) != 3 {
-					return errors.New("expected usage: `seid tx evm erc20-payload transfer [to] [amount]`")
+					return errors.New("expected usage: `kiichaind tx evm erc20-payload transfer [to] [amount]`")
 				}
 				to := common.HexToAddress(args[1])
 				amt, _ := sdk.NewIntFromString(args[2])
 				bz, err = abi.Pack(args[0], to, amt.BigInt())
 			case "approve":
 				if len(args) != 3 {
-					return errors.New("expected usage: `seid tx evm erc20-payload approve [spender] [amount]`")
+					return errors.New("expected usage: `kiichaind tx evm erc20-payload approve [spender] [amount]`")
 				}
 				spender := common.HexToAddress(args[1])
 				amt, _ := sdk.NewIntFromString(args[2])
 				bz, err = abi.Pack(args[0], spender, amt.BigInt())
 			case "transferFrom":
 				if len(args) != 4 {
-					return errors.New("expected usage: `seid tx evm erc20-payload transferFrom [from] [to] [amount]`")
+					return errors.New("expected usage: `kiichaind tx evm erc20-payload transferFrom [from] [to] [amount]`")
 				}
 				from := common.HexToAddress(args[1])
 				to := common.HexToAddress(args[2])

@@ -164,7 +164,7 @@ func NewSetDenomMetadataCmd() *cobra.Command {
 		Long: strings.TrimSpace(
 			`
 Example:
-$ seid tx tokenfactory set-denom-metadata <path/to/metadata.json> --from=<key_or_address>
+$ kiichaind tx tokenfactory set-denom-metadata <path/to/metadata.json> --from=<key_or_address>
 
 Where metadata.json contains:
 

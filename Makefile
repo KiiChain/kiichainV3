@@ -47,7 +47,7 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 # process linker flags
 
 ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=sei \
-			-X github.com/cosmos/cosmos-sdk/version.ServerName=seid \
+			-X github.com/cosmos/cosmos-sdk/version.ServerName=kiichaind \
 			-X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 			-X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 			-X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
@@ -66,10 +66,10 @@ BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
 all: lint install
 
 install: go.sum
-		go install $(BUILD_FLAGS) ./cmd/seid
+		go install $(BUILD_FLAGS) ./cmd/kiichaind
 
 install-with-race-detector: go.sum
-		go install -race $(BUILD_FLAGS) ./cmd/seid
+		go install -race $(BUILD_FLAGS) ./cmd/kiichaind
 
 install-price-feeder: go.sum
 		go install $(BUILD_FLAGS) ./oracle/price-feeder
@@ -90,7 +90,7 @@ lint:
 	go mod verify
 
 build:
-	go build $(BUILD_FLAGS) -o ./build/seid ./cmd/seid
+	go build $(BUILD_FLAGS) -o ./build/kiichaind ./cmd/kiichaind
 
 build-price-feeder:
 	go build $(BUILD_FLAGS) -o ./build/price-feeder ./oracle/price-feeder
@@ -195,7 +195,7 @@ docker-cluster-start: docker-cluster-stop build-docker-node
 
 .PHONY: localnet-start
 
-# Use this to skip the seid build process
+# Use this to skip the kiichaind build process
 docker-cluster-start-skipbuild: docker-cluster-stop build-docker-node
 	@rm -rf $(PROJECT_HOME)/build/generated
 	@cd docker && USERID=$(shell id -u) GROUPID=$(shell id -g) GOCACHE=$(shell go env GOCACHE) NUM_ACCOUNTS=10 SKIP_BUILD=true docker compose up

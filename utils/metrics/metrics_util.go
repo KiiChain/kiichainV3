@@ -37,7 +37,7 @@ func IncrementSudoFailCount(msgType string) {
 	)
 }
 
-// Gauge metric with seid version and git commit as labels
+// Gauge metric with kiichaind version and git commit as labels
 // Metric Name:
 //
 //	seid_version_and_commit

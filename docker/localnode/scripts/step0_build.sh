@@ -4,8 +4,8 @@
 NODE_ID=${ID:-0}
 ARCH=$(uname -m)
 
-# Build seid
-echo "Building seid from local branch"
+# Build kiichaind
+echo "Building kiichaind from local branch"
 git config --global --add safe.directory /sei-protocol/sei-chain
 LEDGER_ENABLED=false
 make clean

@@ -48,11 +48,11 @@ func GetCmdQueryExchangeRates() *cobra.Command {
 Query the current exchange rate of Sei with an asset.
 You can find the current list of active denoms by running
 
-$ seid query oracle exchange-rates
+$ kiichaind query oracle exchange-rates
 
 Or, can filter with denom
 
-$ seid query oracle exchange-rates ukrw
+$ kiichaind query oracle exchange-rates ukrw
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -96,7 +96,7 @@ func GetCmdQueryPriceSnapshotHistory() *cobra.Command {
 Query the history for oracle price snapshots.
 Example:
 
-$ seid query oracle price-snapshot-history
+$ kiichaind query oracle price-snapshot-history
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -127,7 +127,7 @@ func GetCmdQueryTwaps() *cobra.Command {
 Query the time weighted average prices for denoms with price snapshot data
 Example:
 
-$ seid query oracle twaps
+$ kiichaind query oracle twaps
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -166,7 +166,7 @@ func GetCmdQueryActives() *cobra.Command {
 		Long: strings.TrimSpace(`
 Query the active list of Sei assets recognized by the types.
 
-$ seid query oracle actives
+$ kiichaind query oracle actives
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -223,7 +223,7 @@ func GetCmdQueryFeederDelegation() *cobra.Command {
 		Long: strings.TrimSpace(`
 Query the account the validator's oracle voting right is delegated to.
 
-$ seid query oracle feeder terravaloper...
+$ kiichaind query oracle feeder terravaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -263,7 +263,7 @@ func GetCmdQueryVotePenaltyCounter() *cobra.Command {
 		Long: strings.TrimSpace(`
 Query the # of vote periods missed and abstained in this oracle slash window.
 
-$ seid query oracle miss seivaloper...
+$ kiichaind query oracle miss seivaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)

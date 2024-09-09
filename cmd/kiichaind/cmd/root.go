@@ -78,7 +78,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithViper("SEI")
 
 	rootCmd := &cobra.Command{
-		Use:   "seid",
+		Use:   "kiichaind",
 		Short: "Start sei app",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs

@@ -31,13 +31,13 @@ describe("Uniswap Test", function () {
         const deployerWallet = hre.ethers.Wallet.fromMnemonic(accounts.mnemonic, accounts.path);
         deployer = deployerWallet.connect(hre.ethers.provider);
 
-        const seidConfig = await execute('seid config');
+        const seidConfig = await execute('kiichaind config');
         originalSeidConfig = JSON.parse(seidConfig);
 
         if (testChain === 'seilocal') {
             await fundAddress(deployer.address, amount="2000000000000000000000");
         } else {
-            // Set default seid config to the specified rpc url.
+            // Set default kiichaind config to the specified rpc url.
             await execute(`seid config chain-id ${chainIds[testChain]}`)
             await execute(`seid config node ${rpcUrls[testChain]}`)
         }

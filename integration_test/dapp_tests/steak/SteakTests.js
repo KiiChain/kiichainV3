@@ -118,14 +118,14 @@ describe("Steak", async function () {
 
   before(async function () {
 
-    const seidConfig = await execute('seid config');
+    const seidConfig = await execute('kiichaind config');
     originalSeidConfig = JSON.parse(seidConfig);
 
     // Set up the owner account
     if (testChain === 'seilocal') {
       owner = await setupAccount("steak-owner");
     } else {
-      // Set default seid config to the specified rpc url.
+      // Set default kiichaind config to the specified rpc url.
       await execute(`seid config chain-id ${chainIds[testChain]}`)
       await execute(`seid config node ${rpcUrls[testChain]}`)
 

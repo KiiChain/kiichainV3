@@ -88,7 +88,7 @@ EOF
 
 ## Recover oracle `keyring-file` to local file
 ```bash
-seid keys add oracle --keyring-backend file --recover
+kiichaind keys add oracle --keyring-backend file --recover
 ```
 In the sei home directory (~/.sei/) you should see the `keyring-file` folder.  This will be mounted as a volume when running the docker container.
 

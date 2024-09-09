@@ -3,13 +3,13 @@
 # Set up GO PATH
 echo "Configure and initialize environment"
 
-# Testing whether seid works or not
-seid version # Uncomment the below line if there are any dependency issues
-# ldd build/seid
+# Testing whether kiichaind works or not
+kiichaind version # Uncomment the below line if there are any dependency issues
+# ldd build/kiichaind
 
 # Initialize validator node
 MONIKER="sei-rpc-node"
-seid init --chain-id sei "$MONIKER"
+kiichaind init --chain-id sei "$MONIKER"
 
 # Copy configs
 cp docker/rpcnode/config/app.toml ~/.sei/config/app.toml

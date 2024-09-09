@@ -21,15 +21,15 @@ echo -n State Sync Peer:
 read STATE_SYNC_PEER
 echo
 
-COMMIT=$(seid version --long | grep commit)
+COMMIT=$(kiichaind version --long | grep commit)
 COMMITPARTS=($COMMIT)
 if [ ${COMMITPARTS[1]} != $REQUIRED_COMMIT ]
 then
-  echo "incorrect seid version"
+  echo "incorrect kiichaind version"
   exit 1
 fi
 mkdir $HOME/key_backup
-printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | seid keys export $KEY > $HOME/key_backup/key
+printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | kiichaind keys export $KEY > $HOME/key_backup/key
 cp $HOME/.sei/config/priv_validator_key.json $HOME/key_backup
 cp $HOME/.sei/data/priv_validator_state.json $HOME/key_backup
 mkdir $HOME/.sei_backup
@@ -37,9 +37,9 @@ mv $HOME/.sei/config $HOME/.sei_backup
 mv $HOME/.sei/data $HOME/.sei_backup
 mv $HOME/.sei/wasm $HOME/.sei_backup
 cd $HOME/.sei && ls | grep -xv "cosmovisor" | xargs rm -rf
-seid tendermint unsafe-reset-all
-seid init --chain-id $CHAIN_ID $MONIKER
-printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | seid keys import $KEY $HOME/key_backup/key
+kiichaind tendermint unsafe-reset-all
+kiichaind init --chain-id $CHAIN_ID $MONIKER
+printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | kiichaind keys import $KEY $HOME/key_backup/key
 cp $HOME/key_backup/priv_validator_key.json $HOME/.sei/config/
 cp $HOME/key_backup/priv_validator_state.json $HOME/.sei/data/
 LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height); \

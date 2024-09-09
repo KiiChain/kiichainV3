@@ -112,7 +112,7 @@ describe("EVM Precompile Tester", function () {
         let staking;
 
         before(async function () {
-            validatorAddr = JSON.parse(await execute("seid q staking validators -o json")).validators[0].operator_address
+            validatorAddr = JSON.parse(await execute("kiichaind q staking validators -o json")).validators[0].operator_address
             signer = accounts[0].signer;
 
             const contractABIPath = '../../precompiles/staking/abi.json';
@@ -158,8 +158,8 @@ describe("EVM Precompile Tester", function () {
                 this.skip()
                 return;
             }
-            const exchangeRatesContent = await execute("seid q oracle exchange-rates -o json")
-            const twapsContent = await execute("seid q oracle twaps 3600 -o json")
+            const exchangeRatesContent = await execute("kiichaind q oracle exchange-rates -o json")
+            const twapsContent = await execute("kiichaind q oracle twaps 3600 -o json")
 
             exchangeRatesJSON = JSON.parse(exchangeRatesContent).denom_oracle_exchange_rate_pairs;
             twapsJSON = JSON.parse(twapsContent).oracle_twaps;

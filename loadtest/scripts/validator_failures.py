@@ -18,7 +18,7 @@ def failure_restarts(validators, ssh_key, num_concurrent):
         while j < num_concurrent:
             print(f"Restarting validator {validators[i + j]}")
             subprocess.check_output(
-                f"ssh -i {ssh_key} ubuntu@{validators[i + j]} 'sudo -S -p \"\" systemctl restart seid'")
+                f"ssh -i {ssh_key} ubuntu@{validators[i + j]} 'sudo -S -p \"\" systemctl restart kiichaind'")
             j += 1
         i += num_concurrent
 
@@ -33,7 +33,7 @@ def delegation_change(chain_id):
     """
     # First get total voting power
     admin_acc = _get_admin_acc()
-    seid_query_cmd = f"seid q staking delegations {admin_acc} --chain-id {chain_id} --output json"
+    seid_query_cmd = f"kiichaind q staking delegations {admin_acc} --chain-id {chain_id} --output json"
     staking_output = json.loads(
         subprocess.check_output([seid_query_cmd], stderr=subprocess.STDOUT,
                                 shell=True))
@@ -47,13 +47,13 @@ def delegation_change(chain_id):
     for i in range(len(validator_addrs // 4)):
         delegations[validator_addrs[i]] = 10 * total_delegation
         print(f"Delegating {10 * total_delegation} to {validator_addrs[i]}")
-        seid_staking_cmd = f"seid tx staking delegate {validator_addrs[i]} {10 * total_delegation}usei --from admin --chain-id {chain_id} -b block -y"
+        seid_staking_cmd = f"kiichaind tx staking delegate {validator_addrs[i]} {10 * total_delegation}usei --from admin --chain-id {chain_id} -b block -y"
         _run_seid_cmd(seid_staking_cmd)
     time.sleep(random.randint(600, 3600))
     # Unbond
     for validator in delegations:
         print(f"Unbonding {10 * total_delegation} from {validator}")
-        seid_unbond_cmd = f"seid tx staking unbond {validator} {delegations[validator]}usei --from admin -b block -y --chain-id {chain_id}"
+        seid_unbond_cmd = f"kiichaind tx staking unbond {validator} {delegations[validator]}usei --from admin -b block -y --chain-id {chain_id}"
         _run_seid_cmd(seid_unbond_cmd)
 
 
@@ -85,7 +85,7 @@ def slow_network(validators, ssh_key, num_concurrent):
 
 
 def _get_admin_acc():
-    seid_query_cmd = "seid keys list --output json"
+    seid_query_cmd = "kiichaind keys list --output json"
     accs_output = _run_seid_cmd(seid_query_cmd)
     return filter(lambda x: x['name'] == 'admin', accs_output)['address']
 

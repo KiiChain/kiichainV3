@@ -12,7 +12,7 @@ The Mint module's end blocker employs the epoch hook to distribute inflation rew
 The x/epoch module upholds the following state:
 
 ```bash
-> seid q epoch epoch --output json
+> kiichaind q epoch epoch --output json
 {
   "epoch": {
     "genesis_time": "2023-04-27T19:08:11.958027Z",

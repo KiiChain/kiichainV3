@@ -158,7 +158,7 @@ and a `rocksdbBackend` tag:
 -tags "rocksdbBackend"
 ```
 
-to the seid go installation command.
+to the kiichaind go installation command.
 
 Note: Managing these `rocksdb` CGO dependencies and installation issues is one of the reasons why `pebbledb` (written in pure go) is the default.
 
@@ -175,9 +175,9 @@ export CHAIN_ID="<chain_id>"
 export PRIMARY_ENDPOINT="<rpc_endpoint>"
 export SEID_HOME="/root/.sei"
 
-# Step 1: stop seid
-echo "Stopping seid process..."
-systemctl stop seid
+# Step 1: stop kiichaind
+echo "Stopping kiichaind process..."
+systemctl stop kiichaind
 
 # Step 2: remove and clean up data
 echo "Removing data files..."
@@ -190,9 +190,9 @@ rm -rf $SEID_HOME/config/priv_validator_key.json
 rm -rf $SEID_HOME/config/genesis.json
 rm -rf $SEID_HOME/config/config.toml
 
-# Step 3: seid init will create reset config and genesis
+# Step 3: kiichaind init will create reset config and genesis
 echo "Seid Init and set config..."
-seid init --chain-id "$CHAIN_ID" "$MONIKER"
+kiichaind init --chain-id "$CHAIN_ID" "$MONIKER"
 
 # Step 4: Get trusted height and hash
 LATEST_HEIGHT=$(curl -s "$PRIMARY_ENDPOINT"/status | jq -r ".sync_info.latest_block_height")
@@ -220,9 +220,9 @@ cp /root/priv_validator_state.json $SEID_HOME/data/priv_validator_state.json
 cp /root/priv_validator_key.json $SEID_HOME/config/priv_validator_key.json
 cp /root/genesis.json $SEID_HOME/config/genesis.json
 
-# Step 8: Restart seid
-echo "Restarting seid process..."
-systemctl restart seid
+# Step 8: Restart kiichaind
+echo "Restarting kiichaind process..."
+systemctl restart kiichaind
 ```
 
 ## Verification

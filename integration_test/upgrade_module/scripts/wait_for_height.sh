@@ -25,7 +25,7 @@ while true; do
    fi
 
    # Query the current block height of the node
-   CURRENT_BLOCK_HEIGHT=$(seid status | jq '.SyncInfo.latest_block_height' -r)
+   CURRENT_BLOCK_HEIGHT=$(kiichaind status | jq '.SyncInfo.latest_block_height' -r)
 
    if [[ "$CURRENT_BLOCK_HEIGHT" -ge "$TARGET_BLOCK_HEIGHT" ]]; then
        echo "Block height reached at $CURRENT_BLOCK_HEIGHT"

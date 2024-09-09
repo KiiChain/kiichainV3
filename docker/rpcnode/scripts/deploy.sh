@@ -13,12 +13,12 @@ echo "export PATH=$GOBIN:$PATH:/usr/local/go/bin:$BUILD_PATH" >> /root/.bashrc
 /bin/bash -c "source /root/.bashrc"
 mkdir -p $GOBIN
 
-# Step 1 build seid
+# Step 1 build kiichaind
 if [ -z "$SKIP_BUILD" ]
 then
   /usr/bin/build.sh
 fi
-cp build/seid "$GOBIN"/
+cp build/kiichaind "$GOBIN"/
 
 # Run init to set up state sync configurations
 /usr/bin/configure_init.sh

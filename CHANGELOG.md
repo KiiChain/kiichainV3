@@ -121,7 +121,7 @@ sei-chain
 * [#1606](https://github.com/sei-protocol/sei-chain/pull/1606) SKip evm antehandler on sr25519 signatures
 
 sei-cosmos:
-* [#495](https://github.com/sei-protocol/sei-cosmos/pull/495) Fix seid keys list by ignoring evm-addr for sr25519
+* [#495](https://github.com/sei-protocol/sei-cosmos/pull/495) Fix kiichaind keys list by ignoring evm-addr for sr25519
 * [#493](https://github.com/sei-protocol/sei-cosmos/pull/493) Remove non-multiplier gas meter
 
 sei-tendermint:
@@ -261,7 +261,7 @@ sei-chain:
 * [#940](https://github.com/sei-protocol/sei-chain/pull/940) Use ImmutableAppend for v16 to v17 dex migration
 
 sei-cosmos:
-* [#306](https://github.com/sei-protocol/sei-cosmos/pull/306) Fix dryRun for seid tx
+* [#306](https://github.com/sei-protocol/sei-cosmos/pull/306) Fix dryRun for kiichaind tx
 
 ## 3.0.5
 sei-chain:
@@ -313,7 +313,7 @@ sei-chain:
 * [#790](https://github.com/sei-protocol/sei-chain/pull/790) Disable non-prioritized tx concurrency
 * [#789](https://github.com/sei-protocol/sei-chain/pull/789) Adds appropriate READ access for dex contract in antehandler
 * [#788](https://github.com/sei-protocol/sei-chain/pull/788) Clear dex memstate cache when falling back to sequential processing
-* [#786](https://github.com/sei-protocol/sei-chain/pull/786) Add NoVersioning to seid command
+* [#786](https://github.com/sei-protocol/sei-chain/pull/786) Add NoVersioning to kiichaind command
 * [#781](https://github.com/sei-protocol/sei-chain/pull/781) Add order limit for price level and pair limit for contracts
 
 tm-db:
@@ -417,7 +417,7 @@ sei-tendermint: https://github.com/sei-protocol/sei-tendermint/compare/2.0.42bet
 ## 2.0.42beta
 
 sei-chain:
-* [#670](https://github.com/sei-protocol/sei-chain/pull/670) Add add-wasm-genesis-message to seid
+* [#670](https://github.com/sei-protocol/sei-chain/pull/670) Add add-wasm-genesis-message to kiichaind
 * [#654](https://github.com/sei-protocol/sei-chain/pull/654) Improve endblock performance and fix trace
 
 sei-cosmos: https://github.com/sei-protocol/sei-cosmos/compare/v0.2.8...v0.2.12

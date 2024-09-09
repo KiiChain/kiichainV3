@@ -61,7 +61,7 @@ Please make sure you have the following installed locally:
 \t- make
 \t- gcc
 \t- docker
-This tool will build from scratch seid and wipe away existing state.
+This tool will build from scratch kiichaind and wipe away existing state.
 Please backup any important existing data before proceeding.
 """)
 
@@ -253,14 +253,14 @@ def main():
         home_dir = os.path.expanduser('~/.sei')
         if enable_unsafe_reset and os.path.exists(home_dir):
             try:
-                subprocess.run(["seid", "tendermint", "unsafe-reset-all"], check=True)
+                subprocess.run(["kiichaind", "tendermint", "unsafe-reset-all"], check=True)
             except subprocess.CalledProcessError as e:
-                logging.error(f"Failed to execute 'seid tendermint unsafe-reset-all': {e}")
+                logging.error(f"Failed to execute 'kiichaind tendermint unsafe-reset-all': {e}")
                 sys.exit(1)
 
-        # Clean up previous data, init seid with given chain ID and moniker
+        # Clean up previous data, init kiichaind with given chain ID and moniker
         subprocess.run(["rm", "-rf", home_dir])
-        subprocess.run(["seid", "init", moniker, "--chain-id", chain_id], check=True)
+        subprocess.run(["kiichaind", "init", moniker, "--chain-id", chain_id], check=True)
 
         if env == "local":
             logging.info("Running local initialization script...")
@@ -305,9 +305,9 @@ def main():
                 with open(app_config_path, 'w') as file:
                     file.write(app_data)
 
-        # Start seid
-        logging.info("Starting seid...")
-        run_command("seid start")
+        # Start kiichaind
+        logging.info("Starting kiichaind...")
+        run_command("kiichaind start")
     except KeyboardInterrupt:
         logging.info("Main process interrupted by user. Exiting gracefully...")
 
