@@ -6,13 +6,13 @@ import (
 	"errors"
 	"math/big"
 
+	pcommon "github.com/KiiChain/kiichainV3/precompiles/common"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	pcommon "github.com/sei-protocol/sei-chain/precompiles/common"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 const (

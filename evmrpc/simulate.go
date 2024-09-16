@@ -8,9 +8,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/precompiles/wasmd"
-	"github.com/sei-protocol/sei-chain/utils/helpers"
+	"github.com/KiiChain/kiichainV3/precompiles/wasmd"
+	"github.com/KiiChain/kiichainV3/utils/helpers"
 
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/utils/metrics"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/state"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
@@ -26,11 +31,6 @@ import (
 	"github.com/ethereum/go-ethereum/lib/ethapi"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/utils/metrics"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/state"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 	"github.com/tendermint/tendermint/rpc/coretypes"
 )

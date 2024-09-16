@@ -419,11 +419,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryActives
    * @summary Actives returns all active denoms
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/actives
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/actives
    */
   queryActives = (params: RequestParams = {}) =>
     this.request<OracleQueryActivesResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/actives`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/actives`,
       method: "GET",
       format: "json",
       ...params,
@@ -435,11 +435,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryExchangeRates
    * @summary ExchangeRates returns exchange rates of all denoms
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/exchange_rates
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/exchange_rates
    */
   queryExchangeRates = (params: RequestParams = {}) =>
     this.request<OracleQueryExchangeRatesResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/exchange_rates`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/exchange_rates`,
       method: "GET",
       format: "json",
       ...params,
@@ -451,11 +451,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryPriceSnapshotHistory
    * @summary PriceSnapshotHistory returns the history of price snapshots for all assets
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/price_snapshot_history
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/price_snapshot_history
    */
   queryPriceSnapshotHistory = (params: RequestParams = {}) =>
     this.request<OracleQueryPriceSnapshotHistoryResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/price_snapshot_history`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/price_snapshot_history`,
       method: "GET",
       format: "json",
       ...params,
@@ -466,11 +466,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    *
    * @tags Query
    * @name QueryTwaps
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/twaps
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/twaps
    */
   queryTwaps = (query?: { lookback_seconds?: string }, params: RequestParams = {}) =>
     this.request<OracleQueryTwapsResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/twaps`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/twaps`,
       method: "GET",
       query: query,
       format: "json",
@@ -483,11 +483,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryVoteTargets
    * @summary VoteTargets returns all vote target denoms
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/vote_targets
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/vote_targets
    */
   queryVoteTargets = (params: RequestParams = {}) =>
     this.request<OracleQueryVoteTargetsResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/vote_targets`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/vote_targets`,
       method: "GET",
       format: "json",
       ...params,
@@ -499,11 +499,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryExchangeRate
    * @summary ExchangeRate returns exchange rate of a denom
-   * @request GET:/sei-protocol/sei-chain/oracle/denoms/{denom}/exchange_rate
+   * @request GET:/sei-protocol/kii-chain/oracle/denoms/{denom}/exchange_rate
    */
   queryExchangeRate = (denom: string, params: RequestParams = {}) =>
     this.request<OracleQueryExchangeRateResponse, RpcStatus>({
-      path: `/sei-protocol/sei-chain/oracle/denoms/${denom}/exchange_rate`,
+      path: `/sei-protocol/kii-chain/oracle/denoms/${denom}/exchange_rate`,
       method: "GET",
       format: "json",
       ...params,
@@ -515,7 +515,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @tags Query
    * @name QueryParams
    * @summary Params queries all parameters.
-   * @request GET:/sei-protocol/sei-chain/oracle/params
+   * @request GET:/sei-protocol/kii-chain/oracle/params
    */
   queryParams = (params: RequestParams = {}) =>
     this.request<OracleQueryParamsResponse, RpcStatus>({

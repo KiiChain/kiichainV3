@@ -3,11 +3,11 @@ package evmrpc
 import (
 	"strings"
 
+	evmCfg "github.com/KiiChain/kiichainV3/x/evm/config"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
 	"github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/rpc"
-	evmCfg "github.com/sei-protocol/sei-chain/x/evm/config"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
 	"github.com/tendermint/tendermint/libs/log"
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 )

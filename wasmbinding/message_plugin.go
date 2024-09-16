@@ -3,14 +3,14 @@ package wasmbinding
 import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
+	evmkeeper "github.com/KiiChain/kiichainV3/x/evm/keeper"
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
 	aclkeeper "github.com/cosmos/cosmos-sdk/x/accesscontrol/keeper"
 	acltypes "github.com/cosmos/cosmos-sdk/x/accesscontrol/types"
-	evmkeeper "github.com/sei-protocol/sei-chain/x/evm/keeper"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 type CustomRouter struct {

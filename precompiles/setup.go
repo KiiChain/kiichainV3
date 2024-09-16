@@ -3,21 +3,21 @@ package precompiles
 import (
 	"sync"
 
+	"github.com/KiiChain/kiichainV3/precompiles/addr"
+	"github.com/KiiChain/kiichainV3/precompiles/bank"
+	"github.com/KiiChain/kiichainV3/precompiles/common"
+	"github.com/KiiChain/kiichainV3/precompiles/distribution"
+	"github.com/KiiChain/kiichainV3/precompiles/gov"
+	"github.com/KiiChain/kiichainV3/precompiles/ibc"
+	"github.com/KiiChain/kiichainV3/precompiles/json"
+	"github.com/KiiChain/kiichainV3/precompiles/oracle"
+	"github.com/KiiChain/kiichainV3/precompiles/pointer"
+	"github.com/KiiChain/kiichainV3/precompiles/pointerview"
+	"github.com/KiiChain/kiichainV3/precompiles/staking"
+	"github.com/KiiChain/kiichainV3/precompiles/wasmd"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	ecommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/precompiles/addr"
-	"github.com/sei-protocol/sei-chain/precompiles/bank"
-	"github.com/sei-protocol/sei-chain/precompiles/common"
-	"github.com/sei-protocol/sei-chain/precompiles/distribution"
-	"github.com/sei-protocol/sei-chain/precompiles/gov"
-	"github.com/sei-protocol/sei-chain/precompiles/ibc"
-	"github.com/sei-protocol/sei-chain/precompiles/json"
-	"github.com/sei-protocol/sei-chain/precompiles/oracle"
-	"github.com/sei-protocol/sei-chain/precompiles/pointer"
-	"github.com/sei-protocol/sei-chain/precompiles/pointerview"
-	"github.com/sei-protocol/sei-chain/precompiles/staking"
-	"github.com/sei-protocol/sei-chain/precompiles/wasmd"
 )
 
 var SetupMtx = &sync.Mutex{}

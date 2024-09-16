@@ -4,12 +4,12 @@ import (
 	"testing"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/app/antedecorators"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/accesscontrol"
 	acltypes "github.com/cosmos/cosmos-sdk/x/accesscontrol/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/app/antedecorators"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/proto/tendermint/types"
 )

@@ -1,7 +1,7 @@
 package tools
 
 import (
-	"github.com/sei-protocol/sei-chain/tools/tx-scanner/cmd"
+	"github.com/KiiChain/kiichainV3/tools/tx-scanner/cmd"
 	"github.com/spf13/cobra"
 )
 

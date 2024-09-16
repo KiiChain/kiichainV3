@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	aclutils "github.com/KiiChain/kiichainV3/aclmapping/utils"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
-	aclutils "github.com/sei-protocol/sei-chain/aclmapping/utils"
 )
 
 func TestAllResourcesInTree(t *testing.T) {

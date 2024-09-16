@@ -5,10 +5,10 @@ import (
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	wasmvmtypes "github.com/CosmWasm/wasmvm/types"
+	evmwasm "github.com/KiiChain/kiichainV3/x/evm/client/wasm"
+	tokenfactorywasm "github.com/KiiChain/kiichainV3/x/tokenfactory/client/wasm"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	evmwasm "github.com/sei-protocol/sei-chain/x/evm/client/wasm"
-	tokenfactorywasm "github.com/sei-protocol/sei-chain/x/tokenfactory/client/wasm"
 )
 
 type SeiWasmMessage struct {

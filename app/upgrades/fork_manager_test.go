@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app/apptesting"
+	"github.com/KiiChain/kiichainV3/app/upgrades"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/app/apptesting"
-	"github.com/sei-protocol/sei-chain/app/upgrades"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"

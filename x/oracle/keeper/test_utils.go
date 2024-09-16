@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/x/oracle/types"
-	"github.com/sei-protocol/sei-chain/x/oracle/utils"
+	"github.com/KiiChain/kiichainV3/x/oracle/types"
+	"github.com/KiiChain/kiichainV3/x/oracle/utils"
 	"github.com/stretchr/testify/require"
 
 	"github.com/tendermint/tendermint/crypto"

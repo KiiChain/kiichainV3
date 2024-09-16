@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 )
 
 var _ types.QueryServer = Keeper{}

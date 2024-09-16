@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/testutil/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/testutil/keeper"
 	"github.com/stretchr/testify/require"
 )
 

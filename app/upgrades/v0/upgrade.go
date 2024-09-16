@@ -5,8 +5,8 @@ import (
 
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
+	"github.com/KiiChain/kiichainV3/app/upgrades"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/app/upgrades"
 )
 
 const (

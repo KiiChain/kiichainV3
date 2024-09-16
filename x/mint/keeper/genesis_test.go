@@ -4,11 +4,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/testutil/nullify"
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/testutil/nullify"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/sei-protocol/sei-chain/x/mint/types"
+	"github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/stretchr/testify/require"
 )
 

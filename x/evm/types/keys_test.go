@@ -1,8 +1,8 @@
 package types_test
 
 import (
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"

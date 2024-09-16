@@ -29,11 +29,11 @@ import (
 	"github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/sei-protocol/sei-chain/app"
-	utils2 "github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/config"
-	types2 "github.com/sei-protocol/sei-chain/x/evm/types"
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
+	"github.com/KiiChain/kiichainV3/app"
+	utils2 "github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/config"
+	types2 "github.com/KiiChain/kiichainV3/x/evm/types"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 )
 
 // ignoreStoreKeys are store keys that are not compared

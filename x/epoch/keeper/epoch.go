@@ -1,9 +1,9 @@
 package keeper
 
 import (
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gogo/protobuf/proto"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
 )
 
 const EpochKey = "epoch"

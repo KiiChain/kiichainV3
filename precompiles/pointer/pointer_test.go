@@ -4,16 +4,16 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/precompiles/pointer"
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/native"
+	"github.com/KiiChain/kiichainV3/x/evm/state"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/precompiles/pointer"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/native"
-	"github.com/sei-protocol/sei-chain/x/evm/state"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/stretchr/testify/require"
 )
 

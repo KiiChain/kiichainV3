@@ -6,10 +6,10 @@ import (
 
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
+	"github.com/KiiChain/kiichainV3/app"
+	epochTypes "github.com/KiiChain/kiichainV3/x/epoch/types"
+	"github.com/KiiChain/kiichainV3/x/mint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/app"
-	epochTypes "github.com/sei-protocol/sei-chain/x/epoch/types"
-	"github.com/sei-protocol/sei-chain/x/mint/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -5,10 +5,10 @@ import (
 	"math"
 	"testing"
 
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/utils"
 	"github.com/stretchr/testify/require"
 )
 

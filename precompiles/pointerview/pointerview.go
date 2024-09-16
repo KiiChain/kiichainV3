@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"math/big"
 
+	pcommon "github.com/KiiChain/kiichainV3/precompiles/common"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	pcommon "github.com/sei-protocol/sei-chain/precompiles/common"
 )
 
 const (

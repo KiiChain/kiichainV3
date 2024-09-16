@@ -10,10 +10,10 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/sei-protocol/sei-chain/occ_tests/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/config"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
-	"github.com/sei-protocol/sei-chain/x/evm/types/ethtx"
+	"github.com/KiiChain/kiichainV3/occ_tests/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/config"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
+	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
 )
 
 const instantiateMsg = `{"whitelist": ["sei1h9yjz89tl0dl6zu65dpxcqnxfhq60wxx8s5kag"],

@@ -3,11 +3,11 @@ package antedecorators_test
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/app/antedecorators"
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/authz"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/sei-protocol/sei-chain/app/antedecorators"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"

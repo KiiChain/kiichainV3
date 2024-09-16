@@ -14,12 +14,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/spf13/cobra"
 
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/cw20"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/cw721"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/native"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/cw20"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/cw721"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/native"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 const TrueStr = "true"

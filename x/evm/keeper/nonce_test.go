@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"testing"
 
-	keepertest "github.com/sei-protocol/sei-chain/testutil/keeper"
+	keepertest "github.com/KiiChain/kiichainV3/testutil/keeper"
 	"github.com/stretchr/testify/require"
 )
 

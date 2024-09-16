@@ -33,12 +33,12 @@ echo "Building..."
 #install kiichaind
 make install
 # initialize chain with chain ID and add the first key
-~/go/bin/kiichaind init demo --chain-id sei-chain
+~/go/bin/kiichaind init demo --chain-id kii-chain
 ~/go/bin/kiichaind keys add $keyname --keyring-backend test
 # add the key as a genesis account with massive balances of several different tokens
 ~/go/bin/kiichaind add-genesis-account $(~/go/bin/kiichaind keys show $keyname -a --keyring-backend test) 100000000000000000000usei,100000000000000000000uusdc,100000000000000000000uatom --keyring-backend test
 # gentx for account
-~/go/bin/kiichaind gentx $keyname 7000000000000000usei --chain-id sei-chain --keyring-backend test
+~/go/bin/kiichaind gentx $keyname 7000000000000000usei --chain-id kii-chain --keyring-backend test
 # add validator information to genesis file
 KEY=$(jq '.pub_key' ~/.sei/config/priv_validator_key.json -c)
 jq '.validators = [{}]' ~/.sei/config/genesis.json > ~/.sei/config/tmp_genesis.json
@@ -130,4 +130,4 @@ if [ $NO_RUN = 1 ]; then
 fi
 
 # start the chain with log tracing
-GORACE="log_path=/tmp/race/seid_race" ~/go/bin/kiichaind start --trace --chain-id sei-chain
+GORACE="log_path=/tmp/race/seid_race" ~/go/bin/kiichaind start --trace --chain-id kii-chain

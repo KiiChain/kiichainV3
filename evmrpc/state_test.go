@@ -10,12 +10,12 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/evmrpc"
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/evmrpc"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 )

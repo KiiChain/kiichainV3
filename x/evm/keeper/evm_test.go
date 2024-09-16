@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/native"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/native"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 )
 
 func TestInternalCallCreateContract(t *testing.T) {

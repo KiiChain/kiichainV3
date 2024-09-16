@@ -1,10 +1,10 @@
 package migrations
 
 import (
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 // This migration is to fix total supply mismatch caused by mishandled

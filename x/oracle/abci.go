@@ -4,10 +4,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/utils/metrics"
-	"github.com/sei-protocol/sei-chain/x/oracle/keeper"
-	"github.com/sei-protocol/sei-chain/x/oracle/types"
-	"github.com/sei-protocol/sei-chain/x/oracle/utils"
+	"github.com/KiiChain/kiichainV3/utils/metrics"
+	"github.com/KiiChain/kiichainV3/x/oracle/keeper"
+	"github.com/KiiChain/kiichainV3/x/oracle/types"
+	"github.com/KiiChain/kiichainV3/x/oracle/utils"
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"

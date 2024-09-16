@@ -3,8 +3,8 @@ package keeper
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -3,8 +3,8 @@ package evmrpc
 import (
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
 	"github.com/tendermint/tendermint/libs/time"
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 )

@@ -1,8 +1,8 @@
 package keeper
 
 import (
+	"github.com/KiiChain/kiichainV3/x/mint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/mint/types"
 )
 
 // InitGenesis new mint genesis.

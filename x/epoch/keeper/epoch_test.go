@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 )

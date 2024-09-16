@@ -4,15 +4,15 @@ import (
 	"testing"
 	"time"
 
+	epochTypes "github.com/KiiChain/kiichainV3/x/epoch/types"
+	"github.com/KiiChain/kiichainV3/x/mint/keeper"
+	mintKeeper "github.com/KiiChain/kiichainV3/x/mint/keeper"
+	"github.com/KiiChain/kiichainV3/x/mint/types"
+	mintTypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	epochTypes "github.com/sei-protocol/sei-chain/x/epoch/types"
-	"github.com/sei-protocol/sei-chain/x/mint/keeper"
-	mintKeeper "github.com/sei-protocol/sei-chain/x/mint/keeper"
-	"github.com/sei-protocol/sei-chain/x/mint/types"
-	mintTypes "github.com/sei-protocol/sei-chain/x/mint/types"
 
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/stretchr/testify/require"
 )
 

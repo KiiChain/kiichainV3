@@ -1,12 +1,12 @@
 package state
 
 import (
+	"github.com/KiiChain/kiichainV3/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/tracing"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/utils"
 )
 
 // Initialized for each transaction individually

@@ -5,14 +5,14 @@ import (
 	"testing"
 	"time"
 
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/migrations"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/migrations"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/stretchr/testify/require"
 )
 

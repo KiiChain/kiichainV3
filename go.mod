@@ -1,4 +1,4 @@
-module github.com/sei-protocol/sei-chain
+module github.com/KiiChain/kiichainV3
 
 go 1.21
 

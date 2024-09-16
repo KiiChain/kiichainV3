@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/app/params"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/sei-protocol/sei-chain/app/params"
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
 )
 
 type ModuleParser func([]byte) ([]string, error)

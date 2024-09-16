@@ -2,6 +2,10 @@ package utils
 
 import (
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
+	epochtypes "github.com/KiiChain/kiichainV3/x/epoch/types"
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
+	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
+	tokenfactorytypes "github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 	aclsdktypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
 	acltypes "github.com/cosmos/cosmos-sdk/x/accesscontrol/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -11,10 +15,6 @@ import (
 	feegranttypes "github.com/cosmos/cosmos-sdk/x/feegrant"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	epochtypes "github.com/sei-protocol/sei-chain/x/epoch/types"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
-	oracletypes "github.com/sei-protocol/sei-chain/x/oracle/types"
-	tokenfactorytypes "github.com/sei-protocol/sei-chain/x/tokenfactory/types"
 )
 
 const (

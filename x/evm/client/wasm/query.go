@@ -8,13 +8,13 @@ import (
 	"math/big"
 	"strings"
 
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/cw721"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/native"
+	"github.com/KiiChain/kiichainV3/x/evm/client/wasm/bindings"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/cw721"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/native"
-	"github.com/sei-protocol/sei-chain/x/evm/client/wasm/bindings"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 type EVMQueryHandler struct {

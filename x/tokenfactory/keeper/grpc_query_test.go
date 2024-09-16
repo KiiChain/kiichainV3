@@ -2,9 +2,9 @@ package keeper_test
 
 import (
 	"fmt"
+	"github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/sei-protocol/sei-chain/x/tokenfactory/types"
 )
 
 func (suite *KeeperTestSuite) TestDenomMetadataRequest() {

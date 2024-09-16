@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	"github.com/sei-protocol/sei-chain/app"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"

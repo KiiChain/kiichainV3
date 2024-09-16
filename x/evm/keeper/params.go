@@ -3,10 +3,10 @@ package keeper
 import (
 	"math/big"
 
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/config"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/config"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 const BaseDenom = "usei"

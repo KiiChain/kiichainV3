@@ -7,15 +7,15 @@ import (
 	"os"
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/x/evm/state"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/evm/state"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 
+	"github.com/KiiChain/kiichainV3/precompiles/common"
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/precompiles/common"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
 	"github.com/stretchr/testify/require"
 )
 

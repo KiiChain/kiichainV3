@@ -7,6 +7,8 @@ import (
 	"github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
+	"github.com/KiiChain/kiichainV3/utils"
+	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -16,8 +18,6 @@ import (
 	ibctypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/utils"
-	oracletypes "github.com/sei-protocol/sei-chain/x/oracle/types"
 )
 
 type BankKeeper interface {

@@ -7,12 +7,12 @@ import (
 	"os"
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/evmrpc"
+	"github.com/KiiChain/kiichainV3/example/contracts/simplestorage"
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/core"
-	"github.com/sei-protocol/sei-chain/evmrpc"
-	"github.com/sei-protocol/sei-chain/example/contracts/simplestorage"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/stretchr/testify/require"
 )
 

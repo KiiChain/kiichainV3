@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/sei-protocol/sei-chain/x/tokenfactory/types"
+	"github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

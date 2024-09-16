@@ -3,16 +3,16 @@ package oracle_test
 import (
 	"testing"
 
+	aclutils "github.com/KiiChain/kiichainV3/aclmapping/utils"
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/x/oracle"
+	"github.com/KiiChain/kiichainV3/x/oracle/keeper"
+	"github.com/KiiChain/kiichainV3/x/oracle/types"
+	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
+	"github.com/KiiChain/kiichainV3/x/oracle/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	aclutils "github.com/sei-protocol/sei-chain/aclmapping/utils"
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/x/oracle"
-	"github.com/sei-protocol/sei-chain/x/oracle/keeper"
-	"github.com/sei-protocol/sei-chain/x/oracle/types"
-	oracletypes "github.com/sei-protocol/sei-chain/x/oracle/types"
-	"github.com/sei-protocol/sei-chain/x/oracle/utils"
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 )

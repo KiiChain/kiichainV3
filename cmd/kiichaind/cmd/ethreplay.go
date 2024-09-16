@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
+	"github.com/KiiChain/kiichainV3/app"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/server"
@@ -16,7 +17,6 @@ import (
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	aclkeeper "github.com/cosmos/cosmos-sdk/x/accesscontrol/keeper"
-	"github.com/sei-protocol/sei-chain/app"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
@@ -88,7 +88,7 @@ func ReplayCmd(defaultNodeHome string) *cobra.Command {
 	}
 
 	cmd.Flags().String(flags.FlagHome, defaultNodeHome, "The database home directory")
-	cmd.Flags().String(flags.FlagChainID, "sei-chain", "chain ID")
+	cmd.Flags().String(flags.FlagChainID, "kii-chain", "chain ID")
 
 	return cmd
 }

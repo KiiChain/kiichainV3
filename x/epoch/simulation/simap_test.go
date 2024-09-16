@@ -3,9 +3,9 @@ package simulation_test
 import (
 	"testing"
 
+	epochsimulation "github.com/KiiChain/kiichainV3/x/epoch/simulation"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	epochsimulation "github.com/sei-protocol/sei-chain/x/epoch/simulation"
 
 	"github.com/stretchr/testify/require"
 )

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/tools/tx-scanner/client"
 	txtypes "github.com/cosmos/cosmos-sdk/types/tx"
-	"github.com/sei-protocol/sei-chain/tools/tx-scanner/client"
 )
 
 // GetTxsEvent query the detailed transaction data, same as `kiichaind q txs --events`

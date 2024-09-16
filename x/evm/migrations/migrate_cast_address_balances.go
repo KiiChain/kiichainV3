@@ -3,9 +3,9 @@ package migrations
 import (
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
 )
 
 func MigrateCastAddressBalances(ctx sdk.Context, k *keeper.Keeper) (rerr error) {

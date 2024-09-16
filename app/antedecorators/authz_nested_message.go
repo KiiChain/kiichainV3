@@ -3,9 +3,9 @@ package antedecorators
 import (
 	"errors"
 
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/authz"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 type AuthzNestedMessageDecorator struct{}

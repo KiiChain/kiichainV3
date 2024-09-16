@@ -14,17 +14,17 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
+	"github.com/KiiChain/kiichainV3/x/mint/client/cli"
+	"github.com/KiiChain/kiichainV3/x/mint/client/rest"
+	"github.com/KiiChain/kiichainV3/x/mint/keeper"
+	"github.com/KiiChain/kiichainV3/x/mint/simulation"
+	"github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/sei-protocol/sei-chain/x/mint/client/cli"
-	"github.com/sei-protocol/sei-chain/x/mint/client/rest"
-	"github.com/sei-protocol/sei-chain/x/mint/keeper"
-	"github.com/sei-protocol/sei-chain/x/mint/simulation"
-	"github.com/sei-protocol/sei-chain/x/mint/types"
 )
 
 var (

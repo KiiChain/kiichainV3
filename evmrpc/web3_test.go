@@ -3,7 +3,7 @@ package evmrpc_test
 import (
 	"testing"
 
-	"github.com/sei-protocol/sei-chain/evmrpc"
+	"github.com/KiiChain/kiichainV3/evmrpc"
 	"github.com/stretchr/testify/require"
 )
 

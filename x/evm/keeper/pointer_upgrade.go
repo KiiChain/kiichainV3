@@ -3,14 +3,14 @@ package keeper
 import (
 	"math"
 
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts"
+	"github.com/KiiChain/kiichainV3/x/evm/state"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts"
-	"github.com/sei-protocol/sei-chain/x/evm/state"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 func (k *Keeper) RunWithOneOffEVMInstance(

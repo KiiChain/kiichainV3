@@ -6,18 +6,18 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/sei-protocol/sei-chain/utils/metrics"
-	epochwasm "github.com/sei-protocol/sei-chain/x/epoch/client/wasm"
-	epochbindings "github.com/sei-protocol/sei-chain/x/epoch/client/wasm/bindings"
-	epochtypes "github.com/sei-protocol/sei-chain/x/epoch/types"
-	evmwasm "github.com/sei-protocol/sei-chain/x/evm/client/wasm"
-	evmbindings "github.com/sei-protocol/sei-chain/x/evm/client/wasm/bindings"
-	oraclewasm "github.com/sei-protocol/sei-chain/x/oracle/client/wasm"
-	oraclebindings "github.com/sei-protocol/sei-chain/x/oracle/client/wasm/bindings"
-	oracletypes "github.com/sei-protocol/sei-chain/x/oracle/types"
-	tokenfactorywasm "github.com/sei-protocol/sei-chain/x/tokenfactory/client/wasm"
-	tokenfactorybindings "github.com/sei-protocol/sei-chain/x/tokenfactory/client/wasm/bindings"
-	tokenfactorytypes "github.com/sei-protocol/sei-chain/x/tokenfactory/types"
+	"github.com/KiiChain/kiichainV3/utils/metrics"
+	epochwasm "github.com/KiiChain/kiichainV3/x/epoch/client/wasm"
+	epochbindings "github.com/KiiChain/kiichainV3/x/epoch/client/wasm/bindings"
+	epochtypes "github.com/KiiChain/kiichainV3/x/epoch/types"
+	evmwasm "github.com/KiiChain/kiichainV3/x/evm/client/wasm"
+	evmbindings "github.com/KiiChain/kiichainV3/x/evm/client/wasm/bindings"
+	oraclewasm "github.com/KiiChain/kiichainV3/x/oracle/client/wasm"
+	oraclebindings "github.com/KiiChain/kiichainV3/x/oracle/client/wasm/bindings"
+	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
+	tokenfactorywasm "github.com/KiiChain/kiichainV3/x/tokenfactory/client/wasm"
+	tokenfactorybindings "github.com/KiiChain/kiichainV3/x/tokenfactory/client/wasm/bindings"
+	tokenfactorytypes "github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 )
 
 type QueryPlugin struct {

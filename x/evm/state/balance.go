@@ -3,10 +3,10 @@ package state
 import (
 	"math/big"
 
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/tracing"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 func (s *DBImpl) SubBalance(evmAddr common.Address, amt *big.Int, reason tracing.BalanceChangeReason) {

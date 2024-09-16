@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/utils/metrics"
+	"github.com/KiiChain/kiichainV3/utils/metrics"
 	"github.com/tendermint/tendermint/libs/log"
 )
 

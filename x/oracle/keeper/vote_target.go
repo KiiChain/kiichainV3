@@ -1,8 +1,8 @@
 package keeper
 
 import (
+	"github.com/KiiChain/kiichainV3/x/oracle/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/x/oracle/types"
 )
 
 func (k Keeper) IsVoteTarget(ctx sdk.Context, denom string) bool {

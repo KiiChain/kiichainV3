@@ -10,6 +10,12 @@ import (
 	"runtime/debug"
 	"strings"
 
+	"github.com/KiiChain/kiichainV3/precompiles/wasmd"
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/erc20"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/erc721"
+	"github.com/KiiChain/kiichainV3/x/evm/state"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/armon/go-metrics"
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -21,12 +27,6 @@ import (
 	"github.com/ethereum/go-ethereum/core"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/precompiles/wasmd"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/erc20"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/erc721"
-	"github.com/sei-protocol/sei-chain/x/evm/state"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 type msgServer struct {

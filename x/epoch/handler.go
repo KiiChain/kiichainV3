@@ -3,10 +3,10 @@ package epoch
 import (
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/x/epoch/keeper"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/sei-protocol/sei-chain/x/epoch/keeper"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
 )
 
 func NewHandler(_ keeper.Keeper) sdk.Handler {

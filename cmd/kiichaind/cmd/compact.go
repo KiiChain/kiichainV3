@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app/params"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/server"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/app/params"
 	"github.com/spf13/cobra"
 	leveldbutils "github.com/syndtr/goleveldb/leveldb/util"
 	"github.com/tendermint/tendermint/libs/cli"

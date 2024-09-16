@@ -3,8 +3,8 @@ package provider
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/oracle/price-feeder/config"
 	"github.com/gorilla/websocket"
-	"github.com/sei-protocol/sei-chain/oracle/price-feeder/config"
 	"github.com/stretchr/testify/require"
 )
 

@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/KiiChain/kiichainV3/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto/kzg4844"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/holiman/uint256"
-	"github.com/sei-protocol/sei-chain/utils"
 )
 
 func NewBlobTx(tx *ethtypes.Transaction) (*BlobTx, error) {

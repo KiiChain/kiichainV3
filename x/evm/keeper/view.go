@@ -3,10 +3,10 @@ package keeper
 import (
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 func (k *Keeper) QueryERCSingleOutput(ctx sdk.Context, typ string, addr common.Address, query string) (interface{}, error) {

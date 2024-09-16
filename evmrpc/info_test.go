@@ -5,13 +5,13 @@ import (
 	"math/big"
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/evmrpc"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/go-bip39"
-	"github.com/sei-protocol/sei-chain/evmrpc"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

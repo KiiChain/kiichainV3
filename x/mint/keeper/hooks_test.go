@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	keepertest "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
+	keepertest "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 

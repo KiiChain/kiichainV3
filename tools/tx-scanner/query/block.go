@@ -3,8 +3,8 @@ package query
 import (
 	"context"
 
+	"github.com/KiiChain/kiichainV3/tools/tx-scanner/client"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
-	"github.com/sei-protocol/sei-chain/tools/tx-scanner/client"
 )
 
 // GetLatestBlock query the latest block data

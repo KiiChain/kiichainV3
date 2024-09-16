@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"math/big"
 
+	pcommon "github.com/KiiChain/kiichainV3/precompiles/common"
+	"github.com/KiiChain/kiichainV3/utils"
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	pcommon "github.com/sei-protocol/sei-chain/precompiles/common"
-	"github.com/sei-protocol/sei-chain/utils"
 	"github.com/tendermint/tendermint/libs/log"
 )
 

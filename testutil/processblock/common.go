@@ -6,6 +6,8 @@ import (
 	"encoding/json"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app"
+	"github.com/KiiChain/kiichainV3/utils"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
@@ -15,8 +17,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/cosmos/go-bip39"
-	"github.com/sei-protocol/sei-chain/app"
-	"github.com/sei-protocol/sei-chain/utils"
 	"github.com/tendermint/tendermint/abci/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )

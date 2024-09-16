@@ -15,8 +15,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
 
-	pcommon "github.com/sei-protocol/sei-chain/precompiles/common"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
+	pcommon "github.com/KiiChain/kiichainV3/precompiles/common"
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 )
 
 const (

@@ -1,11 +1,11 @@
 package types
 
 import (
+	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/gogo/protobuf/proto"
-	"github.com/sei-protocol/sei-chain/x/evm/types/ethtx"
 )
 
 const TypeMsgEVMTransaction = "evm_transaction"

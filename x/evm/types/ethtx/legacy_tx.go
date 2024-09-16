@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/KiiChain/kiichainV3/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/sei-protocol/sei-chain/utils"
 )
 
 func NewLegacyTx(tx *ethtypes.Transaction) (*LegacyTx, error) {

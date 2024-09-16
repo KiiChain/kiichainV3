@@ -1,10 +1,10 @@
 package keeper
 
 import (
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 func (k *Keeper) GetState(ctx sdk.Context, addr common.Address, hash common.Hash) common.Hash {

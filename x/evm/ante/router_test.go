@@ -3,14 +3,14 @@ package ante_test
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/x/evm/ante"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
+	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/sei-protocol/sei-chain/x/evm/ante"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
-	"github.com/sei-protocol/sei-chain/x/evm/types/ethtx"
 	"github.com/stretchr/testify/require"
 )
 

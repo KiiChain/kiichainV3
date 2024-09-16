@@ -11,9 +11,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/msgservice"
 
+	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/gogo/protobuf/proto"
-	"github.com/sei-protocol/sei-chain/x/evm/types/ethtx"
 )
 
 var (

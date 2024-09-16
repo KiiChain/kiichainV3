@@ -122,7 +122,7 @@ def get_rpc_server(chain_id):
 # Fetch latest version from GitHub for local environment
 def fetch_latest_version():
     try:
-        response = requests.get("https://api.github.com/repos/sei-protocol/sei-chain/releases/latest")
+        response = requests.get("https://api.github.com/repos/sei-protocol/kii-chain/releases/latest")
         response.raise_for_status()
         latest_version = response.json()["tag_name"]
         logging.info(f"Fetched latest version {latest_version} from GitHub API")
@@ -134,7 +134,7 @@ def fetch_latest_version():
 # Install release based on version tag.
 def install_release(version):
     try:
-        zip_url = f"https://github.com/sei-protocol/sei-chain/archive/refs/tags/{version}.zip"
+        zip_url = f"https://github.com/KiiChain/kiichainV3/archive/refs/tags/{version}.zip"
         response = requests.get(zip_url)
         response.raise_for_status()
         zip_file = zipfile.ZipFile(BytesIO(response.content))
@@ -264,7 +264,7 @@ def main():
 
         if env == "local":
             logging.info("Running local initialization script...")
-            local_script_path = os.path.expanduser('~/sei-chain/scripts/initialize_local_chain.sh')
+            local_script_path = os.path.expanduser('~/kii-chain/scripts/initialize_local_chain.sh')
             run_command(f"chmod +x {local_script_path}")
             run_command(local_script_path)
         else:

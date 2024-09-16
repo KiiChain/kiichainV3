@@ -3,6 +3,8 @@ package keeper_test
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/x/mint/keeper"
+	"github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/store"
@@ -11,8 +13,6 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 	typesparams "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/sei-protocol/sei-chain/x/mint/keeper"
-	"github.com/sei-protocol/sei-chain/x/mint/types"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/libs/log"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"

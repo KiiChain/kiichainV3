@@ -8,9 +8,9 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/sei-protocol/sei-chain/app/apptesting"
-	"github.com/sei-protocol/sei-chain/x/tokenfactory/keeper"
-	"github.com/sei-protocol/sei-chain/x/tokenfactory/types"
+	"github.com/KiiChain/kiichainV3/app/apptesting"
+	"github.com/KiiChain/kiichainV3/x/tokenfactory/keeper"
+	"github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 )
 
 type KeeperTestSuite struct {

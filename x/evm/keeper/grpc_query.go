@@ -4,15 +4,15 @@ import (
 	"context"
 	"errors"
 
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/cw20"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/cw721"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/erc20"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/erc721"
+	"github.com/KiiChain/kiichainV3/x/evm/artifacts/native"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/cw20"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/cw721"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/erc20"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/erc721"
-	"github.com/sei-protocol/sei-chain/x/evm/artifacts/native"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 var _ types.QueryServer = Querier{}

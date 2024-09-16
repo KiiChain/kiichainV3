@@ -3,11 +3,11 @@ package keeper_test
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/testutil/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/sei-protocol/sei-chain/testutil/keeper"
 	"github.com/stretchr/testify/require"
 )
 

@@ -10,6 +10,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
 
+	"github.com/KiiChain/kiichainV3/utils/metrics"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/codec/legacy"
@@ -17,8 +19,6 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/sei-protocol/sei-chain/utils/metrics"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
 	"github.com/tendermint/tendermint/libs/bytes"
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 	"github.com/tendermint/tendermint/rpc/coretypes"

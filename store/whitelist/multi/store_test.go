@@ -3,10 +3,10 @@ package multi_test
 import (
 	"testing"
 
+	"github.com/KiiChain/kiichainV3/store"
+	"github.com/KiiChain/kiichainV3/store/whitelist/multi"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	"github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/store"
-	"github.com/sei-protocol/sei-chain/store/whitelist/multi"
 	"github.com/stretchr/testify/require"
 )
 

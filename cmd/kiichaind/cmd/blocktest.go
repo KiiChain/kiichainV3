@@ -10,6 +10,8 @@ import (
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
+	"github.com/KiiChain/kiichainV3/app"
+	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/server"
@@ -17,8 +19,6 @@ import (
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	aclkeeper "github.com/cosmos/cosmos-sdk/x/accesscontrol/keeper"
 	ethtests "github.com/ethereum/go-ethereum/tests"
-	"github.com/sei-protocol/sei-chain/app"
-	evmtypes "github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/tendermint/tendermint/libs/log"
 
 	//nolint:gosec,G108
@@ -94,7 +94,7 @@ func BlocktestCmd(defaultNodeHome string) *cobra.Command {
 	}
 
 	cmd.Flags().String(flags.FlagHome, defaultNodeHome, "The database home directory")
-	cmd.Flags().String(flags.FlagChainID, "sei-chain", "chain ID")
+	cmd.Flags().String(flags.FlagChainID, "kii-chain", "chain ID")
 	cmd.Flags().String("block-test", "", "path to a block test json file")
 	cmd.Flags().String("test-name", "", "individual test name")
 

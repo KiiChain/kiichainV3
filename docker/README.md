@@ -18,7 +18,7 @@ https://docs.docker.com/compose/install/other/
 
 ## Local Cluster
 
-Detailed instruction: see the `Makefile` in the root of [the repo](https://github.com/sei-protocol/sei-chain/blob/main/Makefile)
+Detailed instruction: see the `Makefile` in the root of [the repo](https://github.com/KiiChain/kiichainV3/blob/main/Makefile)
 
 **To start a single local node (Not Recommended)**
 
@@ -73,8 +73,8 @@ One of the fanciest thing of using docker is fast iteration. Here we support:
 
 In order to make local debugging work, you can follow these steps:
 ```sh
-# Clone your dependency repo and put them under the same path as sei-chain
-cd sei-chain
+# Clone your dependency repo and put them under the same path as kii-chain
+cd kii-chain
 cd ../
 git clone https://github.com/sei-protocol/sei-tendermint.git
 git clone https://github.com/sei-protocol/sei-cosmos.git

@@ -3,8 +3,8 @@ package keeper_test
 import (
 	"testing"
 
+	keepertest "github.com/KiiChain/kiichainV3/testutil/keeper"
 	"github.com/ethereum/go-ethereum/common"
-	keepertest "github.com/sei-protocol/sei-chain/testutil/keeper"
 	"github.com/stretchr/testify/require"
 )
 

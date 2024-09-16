@@ -3,9 +3,9 @@ package cli
 import (
 	"context"
 
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
 	"github.com/spf13/cobra"
 )
 

@@ -3,15 +3,15 @@ package cli
 import (
 	"fmt"
 
+	"github.com/KiiChain/kiichainV3/evmrpc"
+	"github.com/KiiChain/kiichainV3/precompiles"
+	"github.com/KiiChain/kiichainV3/precompiles/pointer"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/sei-protocol/sei-chain/evmrpc"
-	"github.com/sei-protocol/sei-chain/precompiles"
-	"github.com/sei-protocol/sei-chain/precompiles/pointer"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 	"github.com/spf13/cobra"
 )
 

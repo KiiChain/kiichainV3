@@ -1,8 +1,8 @@
 package types
 
 import (
+	"github.com/KiiChain/kiichainV3/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/utils"
 )
 
 type EpochHooks interface {

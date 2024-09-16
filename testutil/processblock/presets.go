@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	"github.com/CosmWasm/wasmd/x/wasm"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
 )
 
 type Preset struct {

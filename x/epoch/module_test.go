@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/app"
+	epoch "github.com/KiiChain/kiichainV3/x/epoch"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/sei-protocol/sei-chain/app"
-	epoch "github.com/sei-protocol/sei-chain/x/epoch"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"

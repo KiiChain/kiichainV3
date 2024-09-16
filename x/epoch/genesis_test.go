@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
-	keepertest "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/testutil/nullify"
-	"github.com/sei-protocol/sei-chain/x/epoch"
-	"github.com/sei-protocol/sei-chain/x/epoch/types"
+	keepertest "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/testutil/nullify"
+	"github.com/KiiChain/kiichainV3/x/epoch"
+	"github.com/KiiChain/kiichainV3/x/epoch/types"
 	"github.com/stretchr/testify/require"
 )
 

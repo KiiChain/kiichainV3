@@ -8,8 +8,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sei-protocol/sei-chain/utils/helpers"
+	"github.com/KiiChain/kiichainV3/utils/helpers"
 
+	testkeeper "github.com/KiiChain/kiichainV3/testutil/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/ante"
+	"github.com/KiiChain/kiichainV3/x/evm/derived"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
+	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
@@ -20,11 +25,6 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/params"
-	testkeeper "github.com/sei-protocol/sei-chain/testutil/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/ante"
-	"github.com/sei-protocol/sei-chain/x/evm/derived"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
-	"github.com/sei-protocol/sei-chain/x/evm/types/ethtx"
 	"github.com/stretchr/testify/require"
 )
 

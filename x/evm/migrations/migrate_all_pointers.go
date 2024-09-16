@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/KiiChain/kiichainV3/utils"
+	"github.com/KiiChain/kiichainV3/x/evm/keeper"
+	"github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/sei-protocol/sei-chain/utils"
-	"github.com/sei-protocol/sei-chain/x/evm/keeper"
-	"github.com/sei-protocol/sei-chain/x/evm/types"
 )
 
 func MigrateERCNativePointers(ctx sdk.Context, k *keeper.Keeper) error {

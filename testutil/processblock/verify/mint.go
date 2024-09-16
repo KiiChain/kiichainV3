@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/KiiChain/kiichainV3/testutil/processblock"
+	minttypes "github.com/KiiChain/kiichainV3/x/mint/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
-	"github.com/sei-protocol/sei-chain/testutil/processblock"
-	minttypes "github.com/sei-protocol/sei-chain/x/mint/types"
 	"github.com/stretchr/testify/require"
 )
 
