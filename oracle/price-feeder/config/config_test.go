@@ -161,7 +161,7 @@ providers = [
 ]
 
 [[currency_pairs]]
-base = "SEI"
+base = "KII"
 chain_denom = "usei"
 quote = "USDT"
 providers = [
@@ -183,8 +183,8 @@ providers = [
 [account]
 address = "sei15nejfgcaanqpw25ru4arvfd0fwy6j8clccvwx4"
 validator = "seivalcons14rjlkfzp56733j5l5nfk6fphjxymgf8mj04d5p"
-chain_id = "sei-local-testnet"
-prefix = "sei"
+chain_id = "kiichain-local-testnet"
+prefix = "kii"
 
 [keyring]
 backend = "test"
@@ -253,7 +253,7 @@ providers = [
 ]
 
 [[currency_pairs]]
-base = "SEI"
+base = "KII"
 chain_denom = "usei"
 quote = "USDT"
 providers = [
@@ -275,8 +275,8 @@ providers = [
 [account]
 address = "sei15nejfgcaanqpw25ru4arvfd0fwy6j8clccvwx4"
 validator = "seivalcons14rjlkfzp56733j5l5nfk6fphjxymgf8mj04d5p"
-chain_id = "sei-local-testnet"
-prefix = "sei"
+chain_id = "kiichain-local-testnet"
+prefix = "kii"
 
 [keyring]
 backend = "test"
@@ -408,8 +408,8 @@ providers = [
 ]
 
 [[currency_pairs]]
-base = "sei"
-chain_denom = "usei"
+base = "kii"
+chain_denom = "ukii"
 quote = "USDT"
 providers = [
 	"kraken",
@@ -430,8 +430,8 @@ providers = [
 [account]
 address = "sei15nejfgcaanqpw25ru4arvfd0fwy6j8clccvwx4"
 validator = "seivalcons14rjlkfzp56733j5l5nfk6fphjxymgf8mj04d5p"
-chain_id = "sei-local-testnet"
-prefix = "sei"
+chain_id = "kiichain-local-testnet"
+prefix = "kii"
 
 [keyring]
 backend = "test"

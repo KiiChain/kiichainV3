@@ -395,14 +395,14 @@ func (m *ExtensionOptionsEthereumTx) XXX_DiscardUnknown() {
 var xxx_messageInfo_ExtensionOptionsEthereumTx proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*AccessTuple)(nil), "seiprotocol.seichain.eth.AccessTuple")
-	proto.RegisterType((*AssociateTx)(nil), "seiprotocol.seichain.eth.AssociateTx")
-	proto.RegisterType((*LegacyTx)(nil), "seiprotocol.seichain.eth.LegacyTx")
-	proto.RegisterType((*AccessListTx)(nil), "seiprotocol.seichain.eth.AccessListTx")
-	proto.RegisterType((*DynamicFeeTx)(nil), "seiprotocol.seichain.eth.DynamicFeeTx")
-	proto.RegisterType((*BlobTx)(nil), "seiprotocol.seichain.eth.BlobTx")
-	proto.RegisterType((*BlobTxSidecar)(nil), "seiprotocol.seichain.eth.BlobTxSidecar")
-	proto.RegisterType((*ExtensionOptionsEthereumTx)(nil), "seiprotocol.seichain.eth.ExtensionOptionsEthereumTx")
+	proto.RegisterType((*AccessTuple)(nil), "kiiprotocol.kiichain.eth.AccessTuple")
+	proto.RegisterType((*AssociateTx)(nil), "kiiprotocol.kiichain.eth.AssociateTx")
+	proto.RegisterType((*LegacyTx)(nil), "kiiprotocol.kiichain.eth.LegacyTx")
+	proto.RegisterType((*AccessListTx)(nil), "kiiprotocol.kiichain.eth.AccessListTx")
+	proto.RegisterType((*DynamicFeeTx)(nil), "kiiprotocol.kiichain.eth.DynamicFeeTx")
+	proto.RegisterType((*BlobTx)(nil), "kiiprotocol.kiichain.eth.BlobTx")
+	proto.RegisterType((*BlobTxSidecar)(nil), "kiiprotocol.kiichain.eth.BlobTxSidecar")
+	proto.RegisterType((*ExtensionOptionsEthereumTx)(nil), "kiiprotocol.kiichain.eth.ExtensionOptionsEthereumTx")
 }
 
 func init() { proto.RegisterFile("eth/tx.proto", fileDescriptor_5aa89218db340ee8) }

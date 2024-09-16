@@ -15,12 +15,12 @@ import (
 func TestAddBalance(t *testing.T) {
 	k, ctx := testkeeper.MockEVMKeeper()
 	db := state.NewDBImpl(ctx, k, false)
-	seiAddr, evmAddr := testkeeper.MockAddressPair()
+	kiiAddr, evmAddr := testkeeper.MockAddressPair()
 	require.Equal(t, big.NewInt(0), db.GetBalance(evmAddr))
 	db.AddBalance(evmAddr, big.NewInt(0), tracing.BalanceChangeUnspecified)
 
 	// set association
-	k.SetAddressMapping(db.Ctx(), seiAddr, evmAddr)
+	k.SetAddressMapping(db.Ctx(), kiiAddr, evmAddr)
 	require.Equal(t, big.NewInt(0), db.GetBalance(evmAddr))
 	db.AddBalance(evmAddr, big.NewInt(10000000000000), tracing.BalanceChangeUnspecified)
 	require.Nil(t, db.Err())
@@ -42,16 +42,16 @@ func TestAddBalance(t *testing.T) {
 func TestSubBalance(t *testing.T) {
 	k, ctx := testkeeper.MockEVMKeeper()
 	db := state.NewDBImpl(ctx, k, false)
-	seiAddr, evmAddr := testkeeper.MockAddressPair()
+	kiiAddr, evmAddr := testkeeper.MockAddressPair()
 	require.Equal(t, big.NewInt(0), db.GetBalance(evmAddr))
 	db.SubBalance(evmAddr, big.NewInt(0), tracing.BalanceChangeUnspecified)
 
 	// set association
-	k.SetAddressMapping(db.Ctx(), seiAddr, evmAddr)
+	k.SetAddressMapping(db.Ctx(), kiiAddr, evmAddr)
 	require.Equal(t, big.NewInt(0), db.GetBalance(evmAddr))
 	amt := sdk.NewCoins(sdk.NewCoin(k.GetBaseDenom(ctx), sdk.NewInt(20)))
 	k.BankKeeper().MintCoins(db.Ctx(), types.ModuleName, amt)
-	k.BankKeeper().SendCoinsFromModuleToAccount(db.Ctx(), types.ModuleName, seiAddr, amt)
+	k.BankKeeper().SendCoinsFromModuleToAccount(db.Ctx(), types.ModuleName, kiiAddr, amt)
 	db.SubBalance(evmAddr, big.NewInt(10000000000000), tracing.BalanceChangeUnspecified)
 	require.Nil(t, db.Err())
 	require.Equal(t, db.GetBalance(evmAddr), big.NewInt(10000000000000))
@@ -84,8 +84,8 @@ func TestSetBalance(t *testing.T) {
 	db.SetBalance(evmAddr, big.NewInt(10000000000000), tracing.BalanceChangeUnspecified)
 	require.Equal(t, big.NewInt(10000000000000), db.GetBalance(evmAddr))
 
-	seiAddr2, evmAddr2 := testkeeper.MockAddressPair()
-	k.SetAddressMapping(db.Ctx(), seiAddr2, evmAddr2)
+	kiiAddr2, evmAddr2 := testkeeper.MockAddressPair()
+	k.SetAddressMapping(db.Ctx(), kiiAddr2, evmAddr2)
 	db.SetBalance(evmAddr2, big.NewInt(10000000000000), tracing.BalanceChangeUnspecified)
 	require.Equal(t, big.NewInt(10000000000000), db.GetBalance(evmAddr2))
 }
@@ -94,20 +94,20 @@ func TestSurplus(t *testing.T) {
 	k, ctx := testkeeper.MockEVMKeeper()
 	_, evmAddr := testkeeper.MockAddressPair()
 
-	// test negative usei surplus negative wei surplus
+	// test negative ukii surplus negative wei surplus
 	db := state.NewDBImpl(ctx, k, false)
 	db.AddBalance(evmAddr, big.NewInt(1_000_000_000_001), tracing.BalanceChangeUnspecified)
 	_, err := db.Finalize()
 	require.Nil(t, err)
 
-	// test negative usei surplus positive wei surplus (negative total)
+	// test negative ukii surplus positive wei surplus (negative total)
 	db = state.NewDBImpl(ctx, k, false)
 	db.AddBalance(evmAddr, big.NewInt(1_000_000_000_000), tracing.BalanceChangeUnspecified)
 	db.SubBalance(evmAddr, big.NewInt(1), tracing.BalanceChangeUnspecified)
 	_, err = db.Finalize()
 	require.Nil(t, err)
 
-	// test negative usei surplus positive wei surplus (positive total)
+	// test negative ukii surplus positive wei surplus (positive total)
 	db = state.NewDBImpl(ctx, k, false)
 	db.AddBalance(evmAddr, big.NewInt(1_000_000_000_000), tracing.BalanceChangeUnspecified)
 	db.SubBalance(evmAddr, big.NewInt(2), tracing.BalanceChangeUnspecified)
@@ -116,7 +116,7 @@ func TestSurplus(t *testing.T) {
 	require.Nil(t, err)
 	require.Equal(t, sdk.OneInt(), surplus)
 
-	// test positive usei surplus negative wei surplus (negative total)
+	// test positive ukii surplus negative wei surplus (negative total)
 	db = state.NewDBImpl(ctx, k, false)
 	db.SubBalance(evmAddr, big.NewInt(1_000_000_000_000), tracing.BalanceChangeUnspecified)
 	db.AddBalance(evmAddr, big.NewInt(2), tracing.BalanceChangeUnspecified)
@@ -124,7 +124,7 @@ func TestSurplus(t *testing.T) {
 	_, err = db.Finalize()
 	require.Nil(t, err)
 
-	// test positive usei surplus negative wei surplus (positive total)
+	// test positive ukii surplus negative wei surplus (positive total)
 	db = state.NewDBImpl(ctx, k, false)
 	db.SubBalance(evmAddr, big.NewInt(1_000_000_000_000), tracing.BalanceChangeUnspecified)
 	db.AddBalance(evmAddr, big.NewInt(999_999_999_999), tracing.BalanceChangeUnspecified)

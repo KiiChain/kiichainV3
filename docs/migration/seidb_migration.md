@@ -53,7 +53,7 @@ which aims to improve the overall state access performance and tackle any potent
 
 ### Step 1: Add Configurations
 To enable SeiDB, you need to add the following configs to app.toml file.
-Usually you can find this file under ~/.sei/config/app.toml.
+Usually you can find this file under ~/.kiichain/config/app.toml.
 ```bash
 #############################################################################
 ###                             SeiDB Configuration                       ###

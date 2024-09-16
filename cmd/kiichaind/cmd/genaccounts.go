@@ -42,7 +42,7 @@ func AddGenesisAccountCmd(defaultNodeHome string) *cobra.Command {
 the account address or key name and a list of initial coins. If a key name is given,
 the address will be looked up in the local Keybase. The list of initial tokens must
 contain valid denominations. Accounts may optionally be supplied with vesting parameters.
-The association between the sei address and the eth address will also be created here if using keyring-backend test.
+The association between the kii address and the eth address will also be created here if using keyring-backend test.
 `,
 		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -134,7 +134,7 @@ The association between the sei address and the eth address will also be created
 				return fmt.Errorf("failed to unmarshal genesis state: %w", err)
 			}
 			if keyringBackend == keyring.BackendTest {
-				// associate the eth address with the sei address through the genesis file
+				// associate the eth address with the kii address through the genesis file
 				evmGenState := evm.GetGenesisStateFromAppState(depCdc, appState)
 				seiEthAddrAssociation := evmtypes.AddressAssociation{
 					SeiAddress: addr.String(),
@@ -226,7 +226,7 @@ func getPrivateKeyOfAddr(kb keyring.Keyring, addr sdk.Address) (*ecdsa.PrivateKe
 				return nil, err
 			}
 			privHex := hex.EncodeToString(priv.Bytes())
-			// Need to use private key to convert to sei address here
+			// Need to use private key to convert to kii address here
 			privKey, err := crypto.HexToECDSA(privHex)
 			if err != nil {
 				return nil, err

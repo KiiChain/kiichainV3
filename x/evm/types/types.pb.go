@@ -138,7 +138,7 @@ func (m *DeferredInfo) GetError() string {
 }
 
 func init() {
-	proto.RegisterType((*Whitelist)(nil), "seiprotocol.seichain.evm.Whitelist")
+	proto.RegisterType((*Whitelist)(nil), "kiiprotocol.seichain.evm.Whitelist")
 	proto.RegisterType((*DeferredInfo)(nil), "seiprotocol.seichain.evm.DeferredInfo")
 }
 

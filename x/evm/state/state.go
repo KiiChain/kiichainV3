@@ -59,14 +59,14 @@ func (s *DBImpl) SetTransientState(addr common.Address, key, val common.Hash) {
 }
 
 // debits account's balance. The corresponding credit happens here:
-// https://github.com/sei-protocol/go-ethereum/blob/master/core/vm/instructions.go#L825
+// https://github.com/kii-protocol/go-ethereum/blob/master/core/vm/instructions.go#L825
 // clear account's state except the transient state (in Ethereum transient states are
 // still available even after self destruction in the same tx)
 func (s *DBImpl) SelfDestruct(acc common.Address) {
 	s.k.PrepareReplayedAddr(s.ctx, acc)
-	if seiAddr, ok := s.k.GetSeiAddress(s.ctx, acc); ok {
+	if kiiAddr, ok := s.k.GetKiiAddress(s.ctx, acc); ok {
 		// remove the association
-		s.k.DeleteAddressMapping(s.ctx, seiAddr, acc)
+		s.k.DeleteAddressMapping(s.ctx, kiiAddr, acc)
 	}
 
 	s.SubBalance(acc, s.GetBalance(acc), tracing.BalanceDecreaseSelfdestruct)

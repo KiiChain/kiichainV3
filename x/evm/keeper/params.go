@@ -9,7 +9,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-const BaseDenom = "usei"
+const BaseDenom = "ukii"
 
 func (k Keeper) SetParams(ctx sdk.Context, params types.Params) {
 	k.Paramstore.SetParamSet(ctx, &params)

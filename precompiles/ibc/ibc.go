@@ -152,7 +152,7 @@ func (p PrecompileExecutor) transfer(ctx sdk.Context, method *abi.Method, args [
 		SourcePort:       validatedArgs.port,
 		SourceChannel:    validatedArgs.channelID,
 		Token:            coin,
-		Sender:           validatedArgs.senderSeiAddr.String(),
+		Sender:           validatedArgs.SenderKiiAddr.String(),
 		Receiver:         validatedArgs.receiverAddressString,
 		TimeoutHeight:    height,
 		TimeoutTimestamp: timeoutTimestamp,
@@ -238,7 +238,7 @@ func (p PrecompileExecutor) transferWithDefaultTimeout(ctx sdk.Context, method *
 		SourcePort:       validatedArgs.port,
 		SourceChannel:    validatedArgs.channelID,
 		Token:            coin,
-		Sender:           validatedArgs.senderSeiAddr.String(),
+		Sender:           validatedArgs.SenderKiiAddr.String(),
 		Receiver:         validatedArgs.receiverAddressString,
 		TimeoutHeight:    height,
 		TimeoutTimestamp: timeoutTimestamp,
@@ -337,7 +337,7 @@ func (p PrecompileExecutor) GetAdjustedTimestamp(ctx sdk.Context, clientId strin
 }
 
 type ValidatedArgs struct {
-	senderSeiAddr         sdk.AccAddress
+	SenderKiiAddr         sdk.AccAddress
 	receiverAddressString string
 	port                  string
 	channelID             string
@@ -346,7 +346,7 @@ type ValidatedArgs struct {
 }
 
 func (p PrecompileExecutor) validateCommonArgs(ctx sdk.Context, args []interface{}, caller common.Address) (*ValidatedArgs, error) {
-	senderSeiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
+	SenderKiiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
 	if !ok {
 		return nil, errors.New("caller is not a valid SEI address")
 	}
@@ -390,7 +390,7 @@ func (p PrecompileExecutor) validateCommonArgs(ctx sdk.Context, args []interface
 		return nil, errors.New("amount is not a big.Int")
 	}
 	return &ValidatedArgs{
-		senderSeiAddr:         senderSeiAddr,
+		SenderKiiAddr:         SenderKiiAddr,
 		receiverAddressString: receiverAddressString,
 		port:                  port,
 		channelID:             channelID,

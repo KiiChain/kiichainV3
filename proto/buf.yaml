@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/sei-protocol/kii-chain
+name: buf.build/kiichain/kiichainV3
 deps:
   - buf.build/cosmos/cosmos-sdk
   - buf.build/cosmos/cosmos-proto

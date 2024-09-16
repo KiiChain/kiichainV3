@@ -25,7 +25,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // XXTime fields indicate upgrade timestamps. For example, a ShanghaiTime
 // of 42198537129 means the chain upgraded to the Shanghai version at timestamp 42198537129.
-// A value of 0 means the upgrade is included in the genesis of the EVM on Sei.
+// A value of 0 means the upgrade is included in the genesis of the EVM on Kii.
 // -1 means upgrade not reached yet.
 type ChainConfig struct {
 	CancunTime int64 `protobuf:"varint,1,opt,name=cancun_time,json=cancunTime,proto3" json:"cancun_time,omitempty" yaml:"cancun_time"`
@@ -88,7 +88,7 @@ func (m *ChainConfig) GetVerkleTime() int64 {
 }
 
 func init() {
-	proto.RegisterType((*ChainConfig)(nil), "seiprotocol.seichain.evm.ChainConfig")
+	proto.RegisterType((*ChainConfig)(nil), "kiiprotocol.kiichain.evm.ChainConfig")
 }
 
 func init() { proto.RegisterFile("evm/config.proto", fileDescriptor_95b591dca6bd862e) }

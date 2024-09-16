@@ -9,7 +9,7 @@ import (
 
 // Chain-ID constants for use in hard fork handlers.
 const (
-	ChainIDSeiHardForkTest = "sei-hard-fork-test"
+	ChainIDSeiHardForkTest = "kii-hard-fork-test"
 )
 
 type HardForkHandler interface {

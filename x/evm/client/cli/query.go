@@ -36,7 +36,7 @@ func GetQueryCmd(_ string) *cobra.Command {
 		RunE:                       client.ValidateCmd,
 	}
 
-	cmd.AddCommand(CmdQuerySeiAddress())
+	cmd.AddCommand(CmdQueryKiiAddress())
 	cmd.AddCommand(CmdQueryEVMAddress())
 	cmd.AddCommand(CmdQueryERC20Payload())
 	cmd.AddCommand(CmdQueryERC721Payload())
@@ -48,10 +48,10 @@ func GetQueryCmd(_ string) *cobra.Command {
 	return cmd
 }
 
-func CmdQuerySeiAddress() *cobra.Command {
+func CmdQueryKiiAddress() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "sei-addr",
-		Short: "gets sei address (sei...) by EVM address (0x...) if account has association set",
+		Use:   "kii-addr",
+		Short: "gets kii address (kii...) by EVM address (0x...) if account has association set",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -61,7 +61,7 @@ func CmdQuerySeiAddress() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			res, err := queryClient.SeiAddressByEVMAddress(context.Background(), &types.QuerySeiAddressByEVMAddressRequest{EvmAddress: args[0]})
+			res, err := queryClient.KiiAddressByEVMAddress(context.Background(), &types.QueryKiiAddressByEVMAddressRequest{EvmAddress: args[0]})
 			if err != nil {
 				return err
 			}
@@ -78,7 +78,7 @@ func CmdQuerySeiAddress() *cobra.Command {
 func CmdQueryEVMAddress() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "evm-addr",
-		Short: "gets evm address (0x...) by Sei address (sei...) if account has association set",
+		Short: "gets evm address (0x...) by Kii address (kii...) if account has association set",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -87,7 +87,7 @@ func CmdQueryEVMAddress() *cobra.Command {
 			}
 			queryClient := types.NewQueryClient(clientCtx)
 
-			res, err := queryClient.EVMAddressBySeiAddress(context.Background(), &types.QueryEVMAddressBySeiAddressRequest{SeiAddress: args[0]})
+			res, err := queryClient.EVMAddressByKiiAddress(context.Background(), &types.QueryEVMAddressByKiiAddressRequest{KiiAddress: args[0]})
 			if err != nil {
 				return err
 			}

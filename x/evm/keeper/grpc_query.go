@@ -27,7 +27,7 @@ func NewQuerier(k *Keeper) Querier {
 	return Querier{Keeper: k}
 }
 
-func (q Querier) SeiAddressByEVMAddress(c context.Context, req *types.QuerySeiAddressByEVMAddressRequest) (*types.QuerySeiAddressByEVMAddressResponse, error) {
+func (q Querier) KiiAddressByEVMAddress(c context.Context, req *types.QuerySeiAddressByEVMAddressRequest) (*types.QuerySeiAddressByEVMAddressResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	if req.EvmAddress == "" {
 		return nil, sdkerrors.ErrInvalidRequest
@@ -41,7 +41,7 @@ func (q Querier) SeiAddressByEVMAddress(c context.Context, req *types.QuerySeiAd
 	return &types.QuerySeiAddressByEVMAddressResponse{SeiAddress: addr.String(), Associated: true}, nil
 }
 
-func (q Querier) EVMAddressBySeiAddress(c context.Context, req *types.QueryEVMAddressBySeiAddressRequest) (*types.QueryEVMAddressBySeiAddressResponse, error) {
+func (q Querier) EVMAddressByKiiAddress(c context.Context, req *types.QueryEVMAddressBySeiAddressRequest) (*types.QueryEVMAddressBySeiAddressResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	if req.SeiAddress == "" {
 		return nil, sdkerrors.ErrInvalidRequest

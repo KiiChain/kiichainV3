@@ -12,9 +12,9 @@ MONIKER="sei-rpc-node"
 kiichaind init --chain-id sei "$MONIKER"
 
 # Copy configs
-cp docker/rpcnode/config/app.toml ~/.sei/config/app.toml
-cp docker/rpcnode/config/config.toml ~/.sei/config/config.toml
-cp build/generated/genesis.json ~/.sei/config/genesis.json
+cp docker/rpcnode/config/app.toml ~/.kiichain/config/app.toml
+cp docker/rpcnode/config/config.toml ~/.kiichain/config/config.toml
+cp build/generated/genesis.json ~/.kiichain/config/genesis.json
 
 # Override state sync configs
 STATE_SYNC_RPC="192.168.10.10:26657"
@@ -24,8 +24,8 @@ STATE_SYNC_PEER=$(paste -s -d ',' build/generated/PEERS)
 LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .block.header.height)
 SYNC_BLOCK_HEIGHT=$LATEST_HEIGHT
 SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .block_id.hash)
-sed -i.bak -e "s|^enable *=.*|enable = true|" ~/.sei/config/config.toml
-sed -i.bak -e "s|^rpc-servers *=.*|rpc-servers = \"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"|" ~/.sei/config/config.toml
-sed -i.bak -e "s|^trust-height *=.*|trust-height = $SYNC_BLOCK_HEIGHT|" ~/.sei/config/config.toml
-sed -i.bak -e "s|^trust-hash *=.*|trust-hash = \"$SYNC_BLOCK_HASH\"|" ~/.sei/config/config.toml
-sed -i.bak -e "s|^persistent-peers *=.*|persistent-peers = \"$STATE_SYNC_PEER\"|" ~/.sei/config/config.toml
+sed -i.bak -e "s|^enable *=.*|enable = true|" ~/.kiichain/config/config.toml
+sed -i.bak -e "s|^rpc-servers *=.*|rpc-servers = \"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"|" ~/.kiichain/config/config.toml
+sed -i.bak -e "s|^trust-height *=.*|trust-height = $SYNC_BLOCK_HEIGHT|" ~/.kiichain/config/config.toml
+sed -i.bak -e "s|^trust-hash *=.*|trust-hash = \"$SYNC_BLOCK_HASH\"|" ~/.kiichain/config/config.toml
+sed -i.bak -e "s|^persistent-peers *=.*|persistent-peers = \"$STATE_SYNC_PEER\"|" ~/.kiichain/config/config.toml

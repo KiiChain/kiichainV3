@@ -1258,7 +1258,7 @@ func (app *App) CacheContext(ctx sdk.Context) (sdk.Context, sdk.CacheMultiStore)
 
 // TODO: (occ) this is the roughly analogous to the execution + validation tasks for OCC, but this one performs validation in isolation
 // rather than comparing against a multi-version store
-// The validation happens immediately after execution all part of DeliverTx (which is a path that goes through sei-cosmos to runTx eventually)
+// The validation happens immediately after execution all part of DeliverTx (which is a path that goes through kii-cosmos to runTx eventually)
 func (app *App) ProcessTxConcurrent(
 	ctx sdk.Context,
 	txIndex int,

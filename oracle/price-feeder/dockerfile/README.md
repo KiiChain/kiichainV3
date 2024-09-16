@@ -98,6 +98,6 @@ docker run \
 --env PRICE_FEEDER_PASS=password \
 -v ~/.sei/keyring-file:/root/.sei/keyring-file \
 -v "$PWD"/config.toml:/root/price-feeder/config.toml \
--v "$PWD"/client.toml:/root/.sei/config/client.toml \
+-v "$PWD"/client.toml:/root/.kiichain/config/client.toml \
 -it price-feeder /root/price-feeder/config.toml
 ```

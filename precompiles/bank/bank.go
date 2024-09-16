@@ -141,7 +141,7 @@ func (p PrecompileExecutor) send(ctx sdk.Context, caller common.Address, method 
 		// short circuit
 		return method.Outputs.Pack(true)
 	}
-	senderSeiAddr, err := p.accAddressFromArg(ctx, args[0])
+	senderKiiAddr, err := p.accAddressFromArg(ctx, args[0])
 	if err != nil {
 		return nil, err
 	}
@@ -150,7 +150,7 @@ func (p PrecompileExecutor) send(ctx sdk.Context, caller common.Address, method 
 		return nil, err
 	}
 
-	if err := p.bankKeeper.SendCoins(ctx, senderSeiAddr, receiverSeiAddr, sdk.NewCoins(sdk.NewCoin(denom, sdk.NewIntFromBigInt(amount)))); err != nil {
+	if err := p.bankKeeper.SendCoins(ctx, senderKiiAddr, receiverSeiAddr, sdk.NewCoins(sdk.NewCoin(denom, sdk.NewIntFromBigInt(amount)))); err != nil {
 		return nil, err
 	}
 
@@ -171,7 +171,7 @@ func (p PrecompileExecutor) sendNative(ctx sdk.Context, method *abi.Method, args
 		return nil, errors.New("set `value` field to non-zero to send")
 	}
 
-	senderSeiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
+	senderKiiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
 	if !ok {
 		return nil, errors.New("invalid addr")
 	}
@@ -186,12 +186,12 @@ func (p PrecompileExecutor) sendNative(ctx sdk.Context, method *abi.Method, args
 		return nil, err
 	}
 
-	usei, wei, err := pcommon.HandlePaymentUseiWei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), senderSeiAddr, value, p.bankKeeper)
+	usei, wei, err := pcommon.HandlePaymentUseiWei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), senderKiiAddr, value, p.bankKeeper)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := p.bankKeeper.SendCoinsAndWei(ctx, senderSeiAddr, receiverSeiAddr, usei, wei); err != nil {
+	if err := p.bankKeeper.SendCoinsAndWei(ctx, senderKiiAddr, receiverSeiAddr, usei, wei); err != nil {
 		return nil, err
 	}
 	accExists := p.accountKeeper.HasAccount(ctx, receiverSeiAddr)

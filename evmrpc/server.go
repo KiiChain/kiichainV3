@@ -83,7 +83,7 @@ func NewEVMHTTPServer(
 			Service:   NewFilterAPI(tmClient, &LogFetcher{tmClient: tmClient, k: k, ctxProvider: ctxProvider}, &FilterConfig{timeout: config.FilterTimeout, maxLog: config.MaxLogNoBlock, maxBlock: config.MaxBlocksForLog}, ConnectionTypeHTTP),
 		},
 		{
-			Namespace: "sei",
+			Namespace: "kiichain",
 			Service:   NewAssociationAPI(tmClient, k, ctxProvider, txConfig.TxDecoder(), sendAPI, ConnectionTypeHTTP),
 		},
 		{

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package seiprotocol.seichain.mint;
+package kiichain.kiichainV3.mint;
 
 option go_package = "github.com/KiiChain/kiichainV3/x/mint/types";
 

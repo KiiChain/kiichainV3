@@ -1,5 +1,5 @@
 syntax = "proto3";
-package seiprotocol.seichain.evm;
+package kiichain.kiichainV3.evm;
 
 option go_package = "github.com/KiiChain/kiichainV3/x/evm/types";
 

@@ -48,7 +48,7 @@ func RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 		&MsgAssociateContractAddress{},
 	)
 	registry.RegisterInterface(
-		"seiprotocol.seichain.evm.TxData",
+		"kiiprotocol.kiichain.evm.TxData",
 		(*ethtx.TxData)(nil),
 		&ethtx.DynamicFeeTx{},
 		&ethtx.AccessListTx{},

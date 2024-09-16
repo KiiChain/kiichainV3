@@ -187,7 +187,7 @@ def get_state_sync_params(rpc_url):
 
 # Fetch peers list
 def get_persistent_peers(rpc_url):
-    node_key_path = os.path.expanduser('~/.sei/config/node_key.json')
+    node_key_path = os.path.expanduser('~/.kiichain/config/node_key.json')
     with open(node_key_path, 'r') as f:
         self_id = json.load(f)['id']
         response = requests.get(f"{rpc_url}/net_info")
@@ -200,7 +200,7 @@ def write_genesis_file(chain_id):
     genesis_url = f"https://raw.githubusercontent.com/sei-protocol/testnet/main/{chain_id}/genesis.json"
     response = requests.get(genesis_url)
     if response.status_code == 200:
-        genesis_path = os.path.expanduser('~/.sei/config/genesis.json')
+        genesis_path = os.path.expanduser('~/.kiichain/config/genesis.json')
         with open(genesis_path, 'wb') as file:
             file.write(response.content)
         logging.info("Genesis file written successfully.")
@@ -276,8 +276,8 @@ def main():
             write_genesis_file(chain_id)
 
             # Config changes
-            config_path = os.path.expanduser('~/.sei/config/config.toml')
-            app_config_path = os.path.expanduser('~/.sei/config/app.toml')
+            config_path = os.path.expanduser('~/.kiichain/config/config.toml')
+            app_config_path = os.path.expanduser('~/.kiichain/config/app.toml')
 
             # Confirm exists before modifying config files
             ensure_file_path(config_path)

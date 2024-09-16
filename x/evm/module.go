@@ -280,9 +280,9 @@ func (am AppModule) EndBlock(ctx sdk.Context, _ abci.RequestEndBlock) []abci.Val
 		if err != nil {
 			panic(err)
 		}
-		coinbase = am.keeper.GetSeiAddressOrDefault(ctx, block.Header_.Coinbase)
+		coinbase = am.keeper.GetKiiAddressOrDefault(ctx, block.Header_.Coinbase)
 	} else if am.keeper.EthReplayConfig.Enabled {
-		coinbase = am.keeper.GetSeiAddressOrDefault(ctx, am.keeper.ReplayBlock.Header_.Coinbase)
+		coinbase = am.keeper.GetKiiAddressOrDefault(ctx, am.keeper.ReplayBlock.Header_.Coinbase)
 		am.keeper.SetReplayedHeight(ctx)
 	} else {
 		coinbase = am.keeper.AccountKeeper().GetModuleAddress(authtypes.FeeCollectorName)
@@ -307,16 +307,16 @@ func (am AppModule) EndBlock(ctx sdk.Context, _ abci.RequestEndBlock) []abci.Val
 		weiBalance := am.keeper.BankKeeper().GetWeiBalance(ctx, coinbaseAddress)
 		if !balance.IsZero() || !weiBalance.IsZero() {
 			if err := am.keeper.BankKeeper().SendCoinsAndWei(ctx, coinbaseAddress, coinbase, balance, weiBalance); err != nil {
-				ctx.Logger().Error(fmt.Sprintf("failed to send usei surplus from %s to coinbase account due to %s", coinbaseAddress.String(), err))
+				ctx.Logger().Error(fmt.Sprintf("failed to send ukii surplus from %s to coinbase account due to %s", coinbaseAddress.String(), err))
 			}
 		}
 		surplus = surplus.Add(deferredInfo.Surplus)
 	}
 	if surplus.IsPositive() {
-		surplusUsei, surplusWei := state.SplitUseiWeiAmount(surplus.BigInt())
-		if surplusUsei.GT(sdk.ZeroInt()) {
-			if err := am.keeper.BankKeeper().AddCoins(ctx, am.keeper.AccountKeeper().GetModuleAddress(types.ModuleName), sdk.NewCoins(sdk.NewCoin(am.keeper.GetBaseDenom(ctx), surplusUsei)), true); err != nil {
-				ctx.Logger().Error("failed to send usei surplus of %s to EVM module account", surplusUsei)
+		surplusUkii, surplusWei := state.SplitUkiiWeiAmount(surplus.BigInt())
+		if surplusUkii.GT(sdk.ZeroInt()) {
+			if err := am.keeper.BankKeeper().AddCoins(ctx, am.keeper.AccountKeeper().GetModuleAddress(types.ModuleName), sdk.NewCoins(sdk.NewCoin(am.keeper.GetBaseDenom(ctx), surplusUkii)), true); err != nil {
+				ctx.Logger().Error("failed to send ukii surplus of %s to EVM module account", surplusUkii)
 			}
 		}
 		if surplusWei.GT(sdk.ZeroInt()) {

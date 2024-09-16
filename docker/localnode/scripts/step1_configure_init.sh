@@ -50,7 +50,7 @@ kiichaind add-genesis-account "$GENESIS_ACCOUNT_ADDRESS" 10000000usei,10000000uu
 
 # Create gentx
 printf "12345678\n" | kiichaind gentx "$ACCOUNT_NAME" 10000000usei --chain-id sei
-cp ~/.sei/config/gentx/* build/generated/gentx/
+cp ~/.kiichain/config/gentx/* build/generated/gentx/
 
 # Creating some testing accounts
 echo "Creating $NUM_ACCOUNTS accounts"

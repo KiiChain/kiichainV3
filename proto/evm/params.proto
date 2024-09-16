@@ -1,5 +1,5 @@
 syntax = "proto3";
-package seiprotocol.seichain.evm;
+package kiichain.kiichainV3.evm;
 
 import "gogoproto/gogo.proto";
 import "evm/config.proto";

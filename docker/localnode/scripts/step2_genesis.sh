@@ -10,7 +10,7 @@ echo "Adding account $ACCOUNT_NAME"
 printf "12345678\n12345678\ny\n" | kiichaind keys add $ACCOUNT_NAME >/dev/null 2>&1
 
 override_genesis() {
-  cat ~/.sei/config/genesis.json | jq "$1" > ~/.sei/config/tmp_genesis.json && mv ~/.sei/config/tmp_genesis.json ~/.sei/config/genesis.json;
+  cat ~/.kiichain/config/genesis.json | jq "$1" > ~/.kiichain/config/tmp_genesis.json && mv ~/.kiichain/config/tmp_genesis.json ~/.kiichain/config/genesis.json;
 }
 
 override_genesis '.app_state["crisis"]["constant_fee"]["denom"]="usei"'
@@ -56,7 +56,7 @@ done <build/generated/genesis_accounts.txt
 printf "12345678\n" | kiichaind add-genesis-account admin 1000000000000000000000usei,1000000000000000000000uusdc,1000000000000000000000uatom
 
 mkdir -p ~/exported_keys
-cp -r build/generated/gentx/* ~/.sei/config/gentx
+cp -r build/generated/gentx/* ~/.kiichain/config/gentx
 cp -r build/generated/exported_keys ~/exported_keys
 
 # add validators to genesis
@@ -66,5 +66,5 @@ cp -r build/generated/exported_keys ~/exported_keys
 echo "Collecting all gentx"
 kiichaind collect-gentxs >/dev/null 2>&1
 
-cp ~/.sei/config/genesis.json build/generated/genesis.json
+cp ~/.kiichain/config/genesis.json build/generated/genesis.json
 echo "Genesis file has been created successfully"

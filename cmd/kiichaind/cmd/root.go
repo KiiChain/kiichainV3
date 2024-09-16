@@ -75,11 +75,11 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithAccountRetriever(types.AccountRetriever{}).
 		WithBroadcastMode(flags.BroadcastBlock).
 		WithHomeDir(app.DefaultNodeHome).
-		WithViper("SEI")
+		WithViper("KII")
 
 	rootCmd := &cobra.Command{
 		Use:   "kiichaind",
-		Short: "Start sei app",
+		Short: "Start kii app",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs
 			cmd.SetOut(cmd.OutOrStdout())

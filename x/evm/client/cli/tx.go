@@ -75,7 +75,7 @@ func GetTxCmd() *cobra.Command {
 func CmdAssociateAddress() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "associate-address [optional priv key hex] --rpc=<url> --from=<sender>",
-		Short: "associate EVM and Sei address for the sender",
+		Short: "associate EVM and Kii address for the sender",
 		Long:  "",
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -160,7 +160,7 @@ func CmdAssociateAddress() *cobra.Command {
 func CmdSend() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "send [to EVM address] [amount in wei] --from=<sender> --gas-fee-cap=<cap> --gas-limit=<limit> --evm-rpc=<url>",
-		Short: "send usei to EVM address",
+		Short: "send ukii to EVM address",
 		Long:  "",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -509,9 +509,9 @@ func CmdCallPrecompile() *cobra.Command {
 	return cmd
 }
 
-func CmdDeployWSEI() *cobra.Command {
+func CmdDeployWKII() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "deploy-wsei --from=<sender> --gas-fee-cap=<cap> --gas-limt=<limit> --evm-rpc=<url>",
+		Use:   "deploy-wkii --from=<sender> --gas-fee-cap=<cap> --gas-limt=<limit> --evm-rpc=<url>",
 		Short: "Deploy ERC20 contract for a native Sei token",
 		Long:  "",
 		Args:  cobra.NoArgs,
