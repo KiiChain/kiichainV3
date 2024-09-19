@@ -322,9 +322,9 @@ func (b *Backend) StateAtTransaction(ctx context.Context, block *ethtypes.Block,
 		// set address association for the sender if not present. Note that here we take the shortcut
 		// of querying from the latest height with the assumption that if this tx has been processed
 		// at all then its association must be present in the latest height
-		_, associated := b.keeper.GetSeiAddress(statedb.Ctx(), msg.From)
+		_, associated := b.keeper.GetKiiAddress(statedb.Ctx(), msg.From)
 		if !associated {
-			seiAddr, associatedNow := b.keeper.GetSeiAddress(b.ctxProvider(LatestCtxHeight), msg.From)
+			seiAddr, associatedNow := b.keeper.GetKiiAddress(b.ctxProvider(LatestCtxHeight), msg.From)
 			if !associatedNow {
 				err := types.NewAssociationMissingErr(msg.From.Hex())
 				metrics.IncrementAssociationError("state_at_tx", err)
@@ -362,9 +362,9 @@ func (b *Backend) StateAtBlock(ctx context.Context, block *ethtypes.Block, reexe
 		// set address association for the sender if not present. Note that here we take the shortcut
 		// of querying from the latest height with the assumption that if this tx has been processed
 		// at all then its association must be present in the latest height
-		_, associated := b.keeper.GetSeiAddress(statedb.Ctx(), msg.From)
+		_, associated := b.keeper.GetKiiAddress(statedb.Ctx(), msg.From)
 		if !associated {
-			seiAddr, associatedNow := b.keeper.GetSeiAddress(b.ctxProvider(LatestCtxHeight), msg.From)
+			seiAddr, associatedNow := b.keeper.GetKiiAddress(b.ctxProvider(LatestCtxHeight), msg.From)
 			if !associatedNow {
 				err := types.NewAssociationMissingErr(msg.From.Hex())
 				metrics.IncrementAssociationError("state_at_block", err)

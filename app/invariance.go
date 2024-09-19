@@ -92,7 +92,7 @@ func (app *App) LightInvarianceTotalSupply(cms sdk.CommitMultiStore) {
 				metrics.IncrCounterWithLabels([]string{"kiichain", "lightinvariance_supply", "unmarshal_failure"}, 1, []metrics.Label{
 					{
 						Name:  "type",
-						Value: "usei",
+						Value: "ukii",
 					}, {
 						Name:  "step",
 						Value: "post_block",
@@ -120,7 +120,7 @@ func (app *App) LightInvarianceTotalSupply(cms sdk.CommitMultiStore) {
 			metrics.IncrCounterWithLabels([]string{"kiichain", "lightinvariance_supply", "unmarshal_failure"}, 1, []metrics.Label{
 				{
 					Name:  "type",
-					Value: "usei",
+					Value: "ukii",
 				}, {
 					Name:  "step",
 					Value: "pre_block",

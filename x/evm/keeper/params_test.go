@@ -10,7 +10,7 @@ import (
 
 func TestParams(t *testing.T) {
 	k, ctx := testkeeper.MockEVMKeeper()
-	require.Equal(t, "usei", k.GetBaseDenom(ctx))
+	require.Equal(t, "ukii", k.GetBaseDenom(ctx))
 	require.Equal(t, types.DefaultPriorityNormalizer, k.GetPriorityNormalizer(ctx))
 	require.Equal(t, types.DefaultBaseFeePerGas, k.GetBaseFeePerGas(ctx))
 	require.Equal(t, types.DefaultMinFeePerGas, k.GetMinimumFeePerGas(ctx))

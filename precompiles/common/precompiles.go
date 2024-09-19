@@ -265,18 +265,18 @@ func MustGetABI(f embed.FS, filename string) abi.ABI {
 	return newAbi
 }
 
-func GetSeiAddressByEvmAddress(ctx sdk.Context, evmAddress common.Address, evmKeeper EVMKeeper) (sdk.AccAddress, error) {
-	seiAddr, associated := evmKeeper.GetSeiAddress(ctx, evmAddress)
+func GetKiiAddressByEvmAddress(ctx sdk.Context, evmAddress common.Address, evmKeeper EVMKeeper) (sdk.AccAddress, error) {
+	seiAddr, associated := evmKeeper.GetKiiAddress(ctx, evmAddress)
 	if !associated {
 		return nil, types.NewAssociationMissingErr(evmAddress.Hex())
 	}
 	return seiAddr, nil
 }
 
-func GetSeiAddressFromArg(ctx sdk.Context, arg interface{}, evmKeeper EVMKeeper) (sdk.AccAddress, error) {
+func GetKiiAddressFromArg(ctx sdk.Context, arg interface{}, evmKeeper EVMKeeper) (sdk.AccAddress, error) {
 	addr := arg.(common.Address)
 	if addr == (common.Address{}) {
 		return nil, errors.New("invalid addr")
 	}
-	return GetSeiAddressByEvmAddress(ctx, addr, evmKeeper)
+	return GetKiiAddressByEvmAddress(ctx, addr, evmKeeper)
 }

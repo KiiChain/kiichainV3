@@ -128,7 +128,7 @@ func (p PrecompileExecutor) instantiate(ctx sdk.Context, method *abi.Method, cal
 
 	// type assertion will always succeed because it's already validated in p.Prepare call in Run()
 	codeID := args[0].(uint64)
-	creatorAddr, found := p.evmKeeper.GetSeiAddress(ctx, caller)
+	creatorAddr, found := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !found {
 		rerr = types.NewAssociationMissingErr(caller.Hex())
 		return
@@ -174,8 +174,8 @@ func (p PrecompileExecutor) instantiate(ctx sdk.Context, method *abi.Method, cal
 	}
 	useiAmt := coins.AmountOf(sdk.MustGetBaseDenom())
 	if value != nil && !useiAmt.IsZero() {
-		useiAmtAsWei := useiAmt.Mul(state.SdkUseiToSweiMultiplier).BigInt()
-		coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), creatorAddr, useiAmtAsWei, p.bankKeeper)
+		useiAmtAsWei := useiAmt.Mul(state.SdkUkiiToSweiMultiplier).BigInt()
+		coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetKiiAddressOrDefault(ctx, p.address), creatorAddr, useiAmtAsWei, p.bankKeeper)
 		if err != nil {
 			rerr = err
 			return
@@ -267,7 +267,7 @@ func (p PrecompileExecutor) executeBatch(ctx sdk.Context, method *abi.Method, ca
 			rerr = err
 			return
 		}
-		senderAddr, senderAssociated := p.evmKeeper.GetSeiAddress(ctx, caller)
+		senderAddr, senderAssociated := p.evmKeeper.GetKiiAddress(ctx, caller)
 		if !senderAssociated {
 			rerr = types.NewAssociationMissingErr(caller.Hex())
 			return
@@ -282,8 +282,8 @@ func (p PrecompileExecutor) executeBatch(ctx sdk.Context, method *abi.Method, ca
 		useiAmt := coins.AmountOf(sdk.MustGetBaseDenom())
 		if valueCopy != nil && !useiAmt.IsZero() {
 			// process coin amount from the value provided
-			useiAmtAsWei := useiAmt.Mul(state.SdkUseiToSweiMultiplier).BigInt()
-			coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), senderAddr, useiAmtAsWei, p.bankKeeper)
+			useiAmtAsWei := useiAmt.Mul(state.SdkUkiiToSweiMultiplier).BigInt()
+			coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetKiiAddressOrDefault(ctx, p.address), senderAddr, useiAmtAsWei, p.bankKeeper)
 			if err != nil {
 				rerr = err
 				return
@@ -360,7 +360,7 @@ func (p PrecompileExecutor) execute(ctx sdk.Context, method *abi.Method, caller 
 		rerr = err
 		return
 	}
-	senderAddr, found := p.evmKeeper.GetSeiAddress(ctx, caller)
+	senderAddr, found := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !found {
 		rerr = types.NewAssociationMissingErr(caller.Hex())
 		return
@@ -393,8 +393,8 @@ func (p PrecompileExecutor) execute(ctx sdk.Context, method *abi.Method, caller 
 
 	useiAmt := coins.AmountOf(sdk.MustGetBaseDenom())
 	if value != nil && !useiAmt.IsZero() {
-		useiAmtAsWei := useiAmt.Mul(state.SdkUseiToSweiMultiplier).BigInt()
-		coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), senderAddr, useiAmtAsWei, p.bankKeeper)
+		useiAmtAsWei := useiAmt.Mul(state.SdkUkiiToSweiMultiplier).BigInt()
+		coin, err := pcommon.HandlePaymentUsei(ctx, p.evmKeeper.GetKiiAddressOrDefault(ctx, p.address), senderAddr, useiAmtAsWei, p.bankKeeper)
 		if err != nil {
 			rerr = err
 			return

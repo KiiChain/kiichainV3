@@ -268,7 +268,7 @@ func (p PrecompileExecutor) accAddressFromArg(ctx sdk.Context, arg interface{}) 
 	if addr == (common.Address{}) {
 		return nil, errors.New("invalid addr")
 	}
-	seiAddr, found := p.evmKeeper.GetSeiAddress(ctx, addr)
+	seiAddr, found := p.evmKeeper.GetKiiAddress(ctx, addr)
 	if !found {
 		return nil, evmtypes.NewAssociationMissingErr(addr.Hex())
 	}
@@ -346,7 +346,7 @@ type ValidatedArgs struct {
 }
 
 func (p PrecompileExecutor) validateCommonArgs(ctx sdk.Context, args []interface{}, caller common.Address) (*ValidatedArgs, error) {
-	SenderKiiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
+	SenderKiiAddr, ok := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !ok {
 		return nil, errors.New("caller is not a valid SEI address")
 	}

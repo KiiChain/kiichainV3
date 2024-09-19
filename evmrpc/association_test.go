@@ -34,8 +34,8 @@ func TestAssocation(t *testing.T) {
 	require.Equal(t, nil, body["result"])
 }
 
-func TestGetSeiAddress(t *testing.T) {
-	body := sendRequestGoodWithNamespace(t, "kii", "getSeiAddress", "0x1df809C639027b465B931BD63Ce71c8E5834D9d6")
+func TestGetKiiAddress(t *testing.T) {
+	body := sendRequestGoodWithNamespace(t, "kii", "getKiiAddress", "0x1df809C639027b465B931BD63Ce71c8E5834D9d6")
 	require.Equal(t, "sei1mf0llhmqane5w2y8uynmghmk2w4mh0xll9seym", body["result"])
 }
 

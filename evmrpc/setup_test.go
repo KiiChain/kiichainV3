@@ -418,11 +418,11 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	err = testApp.BankKeeper.MintCoins(Ctx, "evm", sdk.NewCoins(sdk.NewCoin("usei", sdk.NewInt(10))))
+	err = testApp.BankKeeper.MintCoins(Ctx, "evm", sdk.NewCoins(sdk.NewCoin("ukii", sdk.NewInt(10))))
 	if err != nil {
 		panic(err)
 	}
-	err = testApp.BankKeeper.SendCoinsFromModuleToAccount(Ctx, "evm", seiAddr, sdk.NewCoins(sdk.NewCoin("usei", sdk.NewInt(10))))
+	err = testApp.BankKeeper.SendCoinsFromModuleToAccount(Ctx, "evm", seiAddr, sdk.NewCoins(sdk.NewCoin("ukii", sdk.NewInt(10))))
 	if err != nil {
 		panic(err)
 	}

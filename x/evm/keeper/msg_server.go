@@ -239,7 +239,7 @@ func (k Keeper) applyEVMMessage(ctx sdk.Context, msg *core.Message, stateDB *sta
 
 func (server msgServer) Send(goCtx context.Context, msg *types.MsgSend) (*types.MsgSendResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
-	recipient := server.GetSeiAddressOrDefault(ctx, common.HexToAddress(msg.ToAddress))
+	recipient := server.GetKiiAddressOrDefault(ctx, common.HexToAddress(msg.ToAddress))
 	_, err := bankkeeper.NewMsgServerImpl(server.BankKeeper()).Send(goCtx, &banktypes.MsgSend{
 		FromAddress: msg.FromAddress,
 		ToAddress:   recipient.String(),

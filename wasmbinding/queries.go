@@ -192,9 +192,9 @@ func (qp QueryPlugin) HandleEVMQuery(ctx sdk.Context, queryData json.RawMessage)
 	case evmbindings.GetEvmAddressType:
 		c := parsedQuery.GetEvmAddress
 		return qp.evmHandler.HandleGetEvmAddress(ctx, c.SeiAddress)
-	case evmbindings.GetSeiAddressType:
-		c := parsedQuery.GetSeiAddress
-		return qp.evmHandler.HandleGetSeiAddress(ctx, c.EvmAddress)
+	case evmbindings.GetKiiAddressType:
+		c := parsedQuery.GetKiiAddress
+		return qp.evmHandler.HandleGetKiiAddress(ctx, c.EvmAddress)
 	case evmbindings.SupportsInterfaceType:
 		c := parsedQuery.SupportsInterface
 		return qp.evmHandler.HandleSupportsInterface(ctx, c.Caller, c.InterfaceID, c.ContractAddress)

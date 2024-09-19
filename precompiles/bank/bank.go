@@ -171,7 +171,7 @@ func (p PrecompileExecutor) sendNative(ctx sdk.Context, method *abi.Method, args
 		return nil, errors.New("set `value` field to non-zero to send")
 	}
 
-	senderKiiAddr, ok := p.evmKeeper.GetSeiAddress(ctx, caller)
+	senderKiiAddr, ok := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !ok {
 		return nil, errors.New("invalid addr")
 	}
@@ -186,7 +186,7 @@ func (p PrecompileExecutor) sendNative(ctx sdk.Context, method *abi.Method, args
 		return nil, err
 	}
 
-	usei, wei, err := pcommon.HandlePaymentUseiWei(ctx, p.evmKeeper.GetSeiAddressOrDefault(ctx, p.address), senderKiiAddr, value, p.bankKeeper)
+	usei, wei, err := pcommon.HandlePaymentUseiWei(ctx, p.evmKeeper.GetKiiAddressOrDefault(ctx, p.address), senderKiiAddr, value, p.bankKeeper)
 	if err != nil {
 		return nil, err
 	}
@@ -315,7 +315,7 @@ func (p PrecompileExecutor) accAddressFromArg(ctx sdk.Context, arg interface{}) 
 	if addr == (common.Address{}) {
 		return nil, errors.New("invalid addr")
 	}
-	seiAddr, found := p.evmKeeper.GetSeiAddress(ctx, addr)
+	seiAddr, found := p.evmKeeper.GetKiiAddress(ctx, addr)
 	if !found {
 		// return the casted version instead
 		return sdk.AccAddress(addr[:]), nil

@@ -43,7 +43,7 @@ func TestNewProposalHandler(t *testing.T) {
 	newMinter := types.NewMinter(
 		"2023-10-05",
 		"2023-11-22",
-		"usei",
+		"ukii",
 		12345,
 	)
 	updateMinterProposal := &types.UpdateMinterProposal{

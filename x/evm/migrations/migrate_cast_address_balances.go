@@ -9,7 +9,7 @@ import (
 )
 
 func MigrateCastAddressBalances(ctx sdk.Context, k *keeper.Keeper) (rerr error) {
-	k.IterateSeiAddressMapping(ctx, func(evmAddr common.Address, seiAddr sdk.AccAddress) bool {
+	k.IterateKiiAddressMapping(ctx, func(evmAddr common.Address, seiAddr sdk.AccAddress) bool {
 		castAddr := sdk.AccAddress(evmAddr[:])
 		if balances := k.BankKeeper().SpendableCoins(ctx, castAddr); !balances.IsZero() {
 			if err := k.BankKeeper().SendCoins(ctx, castAddr, seiAddr, balances); err != nil {

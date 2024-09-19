@@ -74,7 +74,7 @@ func TestSimple(t *testing.T) {
 	require.NotNil(t, receipt)
 	require.Equal(t, uint32(ethtypes.ReceiptStatusSuccessful), receipt.Status)
 	k.SetERC20NativePointer(ctx, "test", common.HexToAddress(receipt.ContractAddress))
-	_, found := k.GetSeiAddress(ctx, common.HexToAddress(receipt.ContractAddress))
+	_, found := k.GetKiiAddress(ctx, common.HexToAddress(receipt.ContractAddress))
 	require.True(t, found)
 
 	// send transaction to the contract

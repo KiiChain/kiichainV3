@@ -117,7 +117,7 @@ func (p PrecompileExecutor) setWithdrawAddress(ctx sdk.Context, method *abi.Meth
 		rerr = err
 		return
 	}
-	delegator, found := p.evmKeeper.GetSeiAddress(ctx, caller)
+	delegator, found := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !found {
 		rerr = types.NewAssociationMissingErr(caller.Hex())
 		return
@@ -188,7 +188,7 @@ func (p PrecompileExecutor) withdraw(ctx sdk.Context, delegator sdk.AccAddress, 
 }
 
 func (p PrecompileExecutor) getDelegator(ctx sdk.Context, caller common.Address) (sdk.AccAddress, error) {
-	delegator, found := p.evmKeeper.GetSeiAddress(ctx, caller)
+	delegator, found := p.evmKeeper.GetKiiAddress(ctx, caller)
 	if !found {
 		return nil, types.NewAssociationMissingErr(caller.Hex())
 	}
@@ -235,7 +235,7 @@ func (p PrecompileExecutor) accAddressFromArg(ctx sdk.Context, arg interface{}) 
 	if addr == (common.Address{}) {
 		return nil, errors.New("invalid addr")
 	}
-	seiAddr, associated := p.evmKeeper.GetSeiAddress(ctx, addr)
+	seiAddr, associated := p.evmKeeper.GetKiiAddress(ctx, addr)
 	if !associated {
 		return nil, errors.New("cannot use an unassociated address as withdraw address")
 	}

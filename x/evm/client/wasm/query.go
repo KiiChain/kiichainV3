@@ -526,10 +526,10 @@ func (h *EVMQueryHandler) HandleGetEvmAddress(ctx sdk.Context, seiAddr string) (
 	return json.Marshal(response)
 }
 
-func (h *EVMQueryHandler) HandleGetSeiAddress(ctx sdk.Context, evmAddr string) ([]byte, error) {
+func (h *EVMQueryHandler) HandleGetKiiAddress(ctx sdk.Context, evmAddr string) ([]byte, error) {
 	addr := common.HexToAddress(evmAddr)
-	seiAddr, associated := h.k.GetSeiAddress(ctx, addr)
-	response := bindings.GetSeiAddressResponse{SeiAddress: seiAddr.String(), Associated: associated}
+	seiAddr, associated := h.k.GetKiiAddress(ctx, addr)
+	response := bindings.GetKiiAddressResponse{SeiAddress: seiAddr.String(), Associated: associated}
 	return json.Marshal(response)
 }
 

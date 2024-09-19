@@ -28,7 +28,7 @@ func TestAssociate(t *testing.T) {
 	// Target refers to the address that the caller is trying to associate.
 	targetPrivKey := testkeeper.MockPrivateKey()
 	targetPrivHex := hex.EncodeToString(targetPrivKey.Bytes())
-	targetSeiAddress, targetEvmAddress := testkeeper.PrivateKeyToAddresses(targetPrivKey)
+	targetKiiAddress, targetEvmAddress := testkeeper.PrivateKeyToAddresses(targetPrivKey)
 	targetKey, _ := crypto.HexToECDSA(targetPrivHex)
 
 	// Create the inputs
@@ -55,7 +55,7 @@ func TestAssociate(t *testing.T) {
 	callerS := fmt.Sprintf("0x%v", new(big.Int).SetBytes(callerSig[32:64]).Text(16))
 	callerV := fmt.Sprintf("0x%v", new(big.Int).SetBytes([]byte{callerSig[64]}).Text(16))
 
-	happyPathOutput, _ := associate.Outputs.Pack(targetSeiAddress.String(), targetEvmAddress)
+	happyPathOutput, _ := associate.Outputs.Pack(targetKiiAddress.String(), targetEvmAddress)
 
 	type args struct {
 		evm    *vm.EVM

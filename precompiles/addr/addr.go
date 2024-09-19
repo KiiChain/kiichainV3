@@ -24,7 +24,7 @@ import (
 )
 
 const (
-	GetSeiAddressMethod = "getSeiAddr"
+	GetKiiAddressMethod = "getKiiAddr"
 	GetEvmAddressMethod = "getEvmAddr"
 	Associate           = "associate"
 )
@@ -43,7 +43,7 @@ type PrecompileExecutor struct {
 	bankKeeper    pcommon.BankKeeper
 	accountKeeper pcommon.AccountKeeper
 
-	GetSeiAddressID []byte
+	GetKiiAddressID []byte
 	GetEvmAddressID []byte
 	AssociateID     []byte
 }
@@ -60,8 +60,8 @@ func NewPrecompile(evmKeeper pcommon.EVMKeeper, bankKeeper pcommon.BankKeeper, a
 
 	for name, m := range newAbi.Methods {
 		switch name {
-		case GetSeiAddressMethod:
-			p.GetSeiAddressID = m.ID
+		case GetKiiAddressMethod:
+			p.GetKiiAddressID = m.ID
 		case GetEvmAddressMethod:
 			p.GetEvmAddressID = m.ID
 		case Associate:
@@ -82,7 +82,7 @@ func (p PrecompileExecutor) RequiredGas(input []byte, method *abi.Method) uint64
 
 func (p PrecompileExecutor) Execute(ctx sdk.Context, method *abi.Method, _ common.Address, _ common.Address, args []interface{}, value *big.Int, _ bool, _ *vm.EVM) (bz []byte, err error) {
 	switch method.Name {
-	case GetSeiAddressMethod:
+	case GetKiiAddressMethod:
 		return p.getSeiAddr(ctx, method, args, value)
 	case GetEvmAddressMethod:
 		return p.getEvmAddr(ctx, method, args, value)
@@ -101,7 +101,7 @@ func (p PrecompileExecutor) getSeiAddr(ctx sdk.Context, method *abi.Method, args
 		return nil, err
 	}
 
-	seiAddr, found := p.evmKeeper.GetSeiAddress(ctx, args[0].(common.Address))
+	seiAddr, found := p.evmKeeper.GetKiiAddress(ctx, args[0].(common.Address))
 	if !found {
 		metrics.IncrementAssociationError("getSeiAddr", types.NewAssociationMissingErr(args[0].(common.Address).Hex()))
 		return nil, fmt.Errorf("EVM address %s is not associated", args[0].(common.Address).Hex())

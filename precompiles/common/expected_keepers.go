@@ -33,8 +33,8 @@ type BankKeeper interface {
 }
 
 type EVMKeeper interface {
-	GetSeiAddress(sdk.Context, common.Address) (sdk.AccAddress, bool)
-	GetSeiAddressOrDefault(ctx sdk.Context, evmAddress common.Address) sdk.AccAddress // only used for getting precompile Sei addresses
+	GetKiiAddress(sdk.Context, common.Address) (sdk.AccAddress, bool)
+	GetKiiAddressOrDefault(ctx sdk.Context, evmAddress common.Address) sdk.AccAddress // only used for getting precompile Sei addresses
 	GetEVMAddress(sdk.Context, sdk.AccAddress) (common.Address, bool)
 	SetAddressMapping(sdk.Context, sdk.AccAddress, common.Address)
 	GetCodeHash(sdk.Context, common.Address) common.Hash

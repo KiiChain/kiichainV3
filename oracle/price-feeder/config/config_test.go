@@ -162,7 +162,7 @@ providers = [
 
 [[currency_pairs]]
 base = "KII"
-chain_denom = "usei"
+chain_denom = "ukii"
 quote = "USDT"
 providers = [
 	"kraken",
@@ -254,7 +254,7 @@ providers = [
 
 [[currency_pairs]]
 base = "KII"
-chain_denom = "usei"
+chain_denom = "ukii"
 quote = "USDT"
 providers = [
 	"kraken",

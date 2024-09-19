@@ -33,7 +33,7 @@ func (q Querier) KiiAddressByEVMAddress(c context.Context, req *types.QuerySeiAd
 		return nil, sdkerrors.ErrInvalidRequest
 	}
 	evmAddr := common.HexToAddress(req.EvmAddress)
-	addr, found := q.Keeper.GetSeiAddress(ctx, evmAddr)
+	addr, found := q.Keeper.GetKiiAddress(ctx, evmAddr)
 	if !found {
 		return &types.QuerySeiAddressByEVMAddressResponse{Associated: false}, nil
 	}

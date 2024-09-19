@@ -281,7 +281,7 @@ func TestPrecompile_Run_Delegation(t *testing.T) {
 				ValidatorAddress: validatorAddress,
 				Shares:           sdk.NewDec(int64(shares)),
 			},
-			Balance: sdk.NewCoin("usei", sdk.NewInt(int64(shares))),
+			Balance: sdk.NewCoin("ukii", sdk.NewInt(int64(shares))),
 		},
 	}
 	hundredSharesValue := new(big.Int)
@@ -289,7 +289,7 @@ func TestPrecompile_Run_Delegation(t *testing.T) {
 	delegation := staking.Delegation{
 		Balance: staking.Balance{
 			Amount: big.NewInt(int64(shares)),
-			Denom:  "usei",
+			Denom:  "ukii",
 		},
 		Delegation: staking.DelegationDetails{
 			DelegatorAddress: callerSeiAddress.String(),

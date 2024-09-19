@@ -278,14 +278,14 @@ func TestGetAddress(t *testing.T) {
 	require.Nil(t, err)
 	require.Nil(t, json.Unmarshal(res, getEvmAddrResp))
 	require.True(t, getEvmAddrResp.Associated)
-	getSeiAddrResp := &bindings.GetSeiAddressResponse{}
-	res, err = h.HandleGetSeiAddress(ctx, evmAddr1.Hex())
+	getSeiAddrResp := &bindings.GetKiiAddressResponse{}
+	res, err = h.HandleGetKiiAddress(ctx, evmAddr1.Hex())
 	require.Nil(t, err)
 	require.Nil(t, json.Unmarshal(res, getSeiAddrResp))
 	require.True(t, getSeiAddrResp.Associated)
 	require.Equal(t, seiAddr1.String(), getSeiAddrResp.SeiAddress)
-	getSeiAddrResp = &bindings.GetSeiAddressResponse{}
-	res, err = h.HandleGetSeiAddress(ctx, evmAddr2.Hex())
+	getSeiAddrResp = &bindings.GetKiiAddressResponse{}
+	res, err = h.HandleGetKiiAddress(ctx, evmAddr2.Hex())
 	require.Nil(t, err)
 	require.Nil(t, json.Unmarshal(res, getSeiAddrResp))
 	require.True(t, getSeiAddrResp.Associated)
@@ -375,7 +375,7 @@ func TestHandleStaticCall(t *testing.T) {
 	require.Empty(t, res.VmError)
 	require.NotEmpty(t, res.ReturnData)
 	require.NotEmpty(t, res.Hash)
-	require.Equal(t, uint64(100000000)-res.GasUsed, k.BankKeeper().GetBalance(ctx, sdk.AccAddress(evmAddr[:]), "usei").Amount.Uint64())
+	require.Equal(t, uint64(100000000)-res.GasUsed, k.BankKeeper().GetBalance(ctx, sdk.AccAddress(evmAddr[:]), "ukii").Amount.Uint64())
 	require.Equal(t, res.GasUsed, k.BankKeeper().GetBalance(ctx, state.GetCoinbaseAddress(ctx.TxIndex()), k.GetBaseDenom(ctx)).Amount.Uint64())
 	receipt, err := k.GetReceipt(ctx, common.HexToHash(res.Hash))
 	require.Nil(t, err)
