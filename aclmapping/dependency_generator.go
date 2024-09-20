@@ -3,7 +3,6 @@ package aclmapping
 import (
 	aclbankmapping "github.com/KiiChain/kiichainV3/aclmapping/bank"
 	aclevmmapping "github.com/KiiChain/kiichainV3/aclmapping/evm"
-	acloraclemapping "github.com/KiiChain/kiichainV3/aclmapping/oracle"
 	acltokenfactorymapping "github.com/KiiChain/kiichainV3/aclmapping/tokenfactory"
 	aclwasmmapping "github.com/KiiChain/kiichainV3/aclmapping/wasm"
 	evmkeeper "github.com/KiiChain/kiichainV3/x/evm/keeper"
@@ -23,7 +22,6 @@ func (customDepGen CustomDependencyGenerator) GetCustomDependencyGenerators(evmK
 	dependencyGeneratorMap = dependencyGeneratorMap.Merge(aclbankmapping.GetBankDepedencyGenerator())
 	dependencyGeneratorMap = dependencyGeneratorMap.Merge(acltokenfactorymapping.GetTokenFactoryDependencyGenerators())
 	dependencyGeneratorMap = dependencyGeneratorMap.Merge(wasmDependencyGenerators.GetWasmDependencyGenerators())
-	dependencyGeneratorMap = dependencyGeneratorMap.Merge(acloraclemapping.GetOracleDependencyGenerator())
 	dependencyGeneratorMap = dependencyGeneratorMap.Merge(aclevmmapping.GetEVMDependencyGenerators(evmKeeper))
 
 	return dependencyGeneratorMap

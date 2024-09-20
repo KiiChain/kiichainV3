@@ -153,9 +153,9 @@ run-rpc-node: build-rpc-node
 	--network docker_localnet \
 	--user="$(shell id -u):$(shell id -g)" \
 	-v $(PROJECT_HOME):/sei-protocol/kii-chain:Z \
-	-v $(PROJECT_HOME)/../sei-tendermint:/sei-protocol/sei-tendermint:Z \
-    -v $(PROJECT_HOME)/../sei-cosmos:/sei-protocol/sei-cosmos:Z \
-    -v $(PROJECT_HOME)/../sei-db:/sei-protocol/sei-db:Z \
+	-v $(PROJECT_HOME)/../kiichain-tendermint:/sei-protocol/sei-tendermint:Z \
+    -v $(PROJECT_HOME)/../kiichain-cosmos:/sei-protocol/sei-cosmos:Z \
+    -v $(PROJECT_HOME)/../kiichain-db:/sei-protocol/sei-db:Z \
 	-v $(GO_PKG_PATH)/mod:/root/go/pkg/mod:Z \
 	-v $(shell go env GOCACHE):/root/.cache/go-build:Z \
 	-p 26668-26670:26656-26658 \
@@ -169,9 +169,9 @@ run-rpc-node-skipbuild: build-rpc-node
 	--network docker_localnet \
 	--user="$(shell id -u):$(shell id -g)" \
 	-v $(PROJECT_HOME):/sei-protocol/kii-chain:Z \
-	-v $(PROJECT_HOME)/../sei-tendermint:/sei-protocol/sei-tendermint:Z \
-    -v $(PROJECT_HOME)/../sei-cosmos:/sei-protocol/sei-cosmos:Z \
-    -v $(PROJECT_HOME)/../sei-db:/sei-protocol/sei-db:Z \
+	-v $(PROJECT_HOME)/../kiichain-tendermint:/sei-protocol/sei-tendermint:Z \
+    -v $(PROJECT_HOME)/../kiichain-cosmos:/sei-protocol/sei-cosmos:Z \
+    -v $(PROJECT_HOME)/../kiichain-db:/sei-protocol/sei-db:Z \
 	-v $(GO_PKG_PATH)/mod:/root/go/pkg/mod:Z \
 	-v $(shell go env GOCACHE):/root/.cache/go-build:Z \
 	-p 26668-26670:26656-26658 \
