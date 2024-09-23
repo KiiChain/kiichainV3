@@ -1329,8 +1329,6 @@ func (app *App) PartitionPrioritizedTxs(_ sdk.Context, txs [][]byte, typedTxs []
 	msgLoop:
 		for _, msg := range typedTxs[idx].GetMsgs() {
 			switch msg.(type) {
-			case *oracletypes.MsgAggregateExchangeRateVote:
-				prioritized = true
 			default:
 				prioritized = false
 				break msgLoop

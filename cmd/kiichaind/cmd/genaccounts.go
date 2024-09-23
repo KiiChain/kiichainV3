@@ -137,7 +137,7 @@ The association between the kii address and the eth address will also be created
 				// associate the eth address with the kii address through the genesis file
 				evmGenState := evm.GetGenesisStateFromAppState(depCdc, appState)
 				seiEthAddrAssociation := evmtypes.AddressAssociation{
-					SeiAddress: addr.String(),
+					KiiAddress: addr.String(),
 					EthAddress: ethAddr.Hex(),
 				}
 				evmGenState.AddressAssociations = append(evmGenState.AddressAssociations, &seiEthAddrAssociation)

@@ -22,8 +22,7 @@ for dir in $proto_dirs; do
 done
 #
 
+cd ..
 echo "Copying files"
-cp -r github.com/KiiChain/kiichainV3/x/epoch/types/epoch.pb.go ./
-#cp -r kiichainV3/* ./
-#rm -rf github.com
-#rm -rf kiichainV3
+cp -r github.com/KiiChain/kiichainV3/x/* ./x/
+rm -rf github.com
