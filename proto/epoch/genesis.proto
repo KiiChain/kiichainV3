@@ -1,5 +1,5 @@
 syntax = "proto3";
-package kiichain.kiichainV3.epoch;
+package epoch;
 
 import "gogoproto/gogo.proto";
 import "epoch/params.proto";

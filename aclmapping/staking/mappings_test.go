@@ -8,7 +8,6 @@ import (
 	stakingacl "github.com/KiiChain/kiichainV3/aclmapping/staking"
 	aclutils "github.com/KiiChain/kiichainV3/aclmapping/utils"
 	"github.com/KiiChain/kiichainV3/app/apptesting"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
@@ -286,15 +285,8 @@ func TestGeneratorInvalidMessageTypes(t *testing.T) {
 		ValidatorAddress: "validator",
 		Amount:           sdk.Coin{Denom: "ukii", Amount: sdk.NewInt(5)},
 	}
-	oracleVote := oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1usei",
-		Feeder:        "test",
-		Validator:     "validator",
-	}
 
-	_, err := stakingacl.MsgUndelegateDependencyGenerator(testWrapper.App.AccessControlKeeper, testWrapper.Ctx, &oracleVote)
-	require.Error(t, err)
-	_, err = stakingacl.MsgUndelegateDependencyGenerator(testWrapper.App.AccessControlKeeper, testWrapper.Ctx, &stakingDelegate)
+	_, err := stakingacl.MsgUndelegateDependencyGenerator(testWrapper.App.AccessControlKeeper, testWrapper.Ctx, &stakingDelegate)
 	require.Error(t, err)
 	_, err = stakingacl.MsgUndelegateDependencyGenerator(testWrapper.App.AccessControlKeeper, testWrapper.Ctx, &stakingDelegate)
 	require.Error(t, err)

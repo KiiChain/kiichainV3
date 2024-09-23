@@ -7,7 +7,6 @@ import (
 	tkfactory "github.com/KiiChain/kiichainV3/aclmapping/tokenfactory"
 	aclutils "github.com/KiiChain/kiichainV3/aclmapping/utils"
 	"github.com/KiiChain/kiichainV3/app/apptesting"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	tokenfactorykeeper "github.com/KiiChain/kiichainV3/x/tokenfactory/keeper"
 	"github.com/KiiChain/kiichainV3/x/tokenfactory/types"
 	tokenfactorytypes "github.com/KiiChain/kiichainV3/x/tokenfactory/types"
@@ -190,26 +189,6 @@ func (suite *KeeperTestSuite) TestMsgMintDependencies() {
 			suite.Require().Empty(missing)
 		})
 	}
-}
-
-func TestGeneratorInvalidMessageTypes(t *testing.T) {
-	accs := authtypes.GenesisAccounts{}
-	balances := []banktypes.Balance{}
-
-	app := simapp.SetupWithGenesisAccounts(accs, balances...)
-	ctx := app.BaseApp.NewContext(false, tmproto.Header{})
-
-	oracleVote := oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1usei",
-		Feeder:        "test",
-		Validator:     "validator",
-	}
-
-	_, err := tkfactory.TokenFactoryBurnDependencyGenerator(app.AccessControlKeeper, ctx, &oracleVote)
-	require.Error(t, err)
-
-	_, err = tkfactory.TokenFactoryMintDependencyGenerator(app.AccessControlKeeper, ctx, &oracleVote)
-	require.Error(t, err)
 }
 
 func TestMsgBeginBurnDepedencyGenerator(t *testing.T) {

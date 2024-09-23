@@ -14,10 +14,6 @@ import (
 	epochbinding "github.com/KiiChain/kiichainV3/x/epoch/client/wasm/bindings"
 	epochtypes "github.com/KiiChain/kiichainV3/x/epoch/types"
 	evmwasm "github.com/KiiChain/kiichainV3/x/evm/client/wasm"
-	oraclewasm "github.com/KiiChain/kiichainV3/x/oracle/client/wasm"
-	oraclebinding "github.com/KiiChain/kiichainV3/x/oracle/client/wasm/bindings"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
-	oracleutils "github.com/KiiChain/kiichainV3/x/oracle/utils"
 	tokenfactorywasm "github.com/KiiChain/kiichainV3/x/tokenfactory/client/wasm"
 	tokenfactorybinding "github.com/KiiChain/kiichainV3/x/tokenfactory/client/wasm/bindings"
 	tokenfactorytypes "github.com/KiiChain/kiichainV3/x/tokenfactory/types"
@@ -32,133 +28,11 @@ func SetupWasmbindingTest(t *testing.T) (*app.TestWrapper, func(ctx sdk.Context,
 
 	testWrapper := app.NewTestWrapper(t, tm, valPub, false)
 
-	oh := oraclewasm.NewOracleWasmQueryHandler(&testWrapper.App.OracleKeeper)
 	eh := epochwasm.NewEpochWasmQueryHandler(&testWrapper.App.EpochKeeper)
 	th := tokenfactorywasm.NewTokenFactoryWasmQueryHandler(&testWrapper.App.TokenFactoryKeeper)
 	evmh := evmwasm.NewEVMQueryHandler(&testWrapper.App.EvmKeeper)
-	qp := wasmbinding.NewQueryPlugin(oh, eh, th, evmh)
+	qp := wasmbinding.NewQueryPlugin(eh, th, evmh)
 	return testWrapper, wasmbinding.CustomQuerier(qp)
-}
-
-func TestWasmUnknownQuery(t *testing.T) {
-	testWrapper, customQuerier := SetupWasmbindingTest(t)
-
-	oracle_req := oraclebinding.SeiOracleQuery{}
-	queryData, err := json.Marshal(oracle_req)
-	require.NoError(t, err)
-	query := wasmbinding.SeiQueryWrapper{Route: wasmbinding.OracleRoute, QueryData: queryData}
-	rawQuery, err := json.Marshal(query)
-	require.NoError(t, err)
-
-	_, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.Error(t, err)
-	require.Equal(t, err, oracletypes.ErrUnknownSeiOracleQuery)
-
-	epoch_req := epochbinding.SeiEpochQuery{}
-	queryData, err = json.Marshal(epoch_req)
-	require.NoError(t, err)
-	query = wasmbinding.SeiQueryWrapper{Route: wasmbinding.EpochRoute, QueryData: queryData}
-	rawQuery, err = json.Marshal(query)
-	require.NoError(t, err)
-
-	_, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.Error(t, err)
-	require.Equal(t, err, epochtypes.ErrUnknownSeiEpochQuery)
-}
-
-func TestWasmGetOracleExchangeRates(t *testing.T) {
-	testWrapper, customQuerier := SetupWasmbindingTest(t)
-
-	req := oraclebinding.SeiOracleQuery{ExchangeRates: &oracletypes.QueryExchangeRatesRequest{}}
-	queryData, err := json.Marshal(req)
-	require.NoError(t, err)
-	query := wasmbinding.SeiQueryWrapper{Route: wasmbinding.OracleRoute, QueryData: queryData}
-
-	rawQuery, err := json.Marshal(query)
-	require.NoError(t, err)
-
-	res, err := customQuerier(testWrapper.Ctx, rawQuery)
-	require.NoError(t, err)
-
-	var parsedRes oracletypes.QueryExchangeRatesResponse
-	err = json.Unmarshal(res, &parsedRes)
-	require.NoError(t, err)
-	require.Equal(t, oracletypes.QueryExchangeRatesResponse{DenomOracleExchangeRatePairs: oracletypes.DenomOracleExchangeRatePairs{}}, parsedRes)
-
-	testWrapper.Ctx = testWrapper.Ctx.WithBlockHeight(11)
-	testWrapper.App.OracleKeeper.SetBaseExchangeRate(testWrapper.Ctx, oracleutils.MicroAtomDenom, sdk.NewDec(12))
-
-	res, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.NoError(t, err)
-
-	var parsedRes2 oracletypes.QueryExchangeRatesResponse
-	err = json.Unmarshal(res, &parsedRes2)
-	require.NoError(t, err)
-	require.Equal(t, oracletypes.QueryExchangeRatesResponse{DenomOracleExchangeRatePairs: oracletypes.DenomOracleExchangeRatePairs{oracletypes.NewDenomOracleExchangeRatePair(oracleutils.MicroAtomDenom, sdk.NewDec(12), sdk.NewInt(11), testWrapper.Ctx.BlockTime().UnixMilli())}}, parsedRes2)
-}
-
-func TestWasmGetOracleTwaps(t *testing.T) {
-	testWrapper, customQuerier := SetupWasmbindingTest(t)
-
-	req := oraclebinding.SeiOracleQuery{OracleTwaps: &oracletypes.QueryTwapsRequest{LookbackSeconds: 200}}
-	queryData, err := json.Marshal(req)
-	require.NoError(t, err)
-	query := wasmbinding.SeiQueryWrapper{Route: wasmbinding.OracleRoute, QueryData: queryData}
-
-	rawQuery, err := json.Marshal(query)
-	require.NoError(t, err)
-
-	// this should error because there is no snapshots to build twap from
-	_, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.Error(t, err)
-
-	testWrapper.Ctx = testWrapper.Ctx.WithBlockHeight(11).WithBlockTime(time.Unix(3600, 0))
-	testWrapper.App.OracleKeeper.SetBaseExchangeRate(testWrapper.Ctx, oracleutils.MicroAtomDenom, sdk.NewDec(12))
-
-	priceSnapshot := oracletypes.PriceSnapshot{SnapshotTimestamp: 3600, PriceSnapshotItems: oracletypes.PriceSnapshotItems{
-		oracletypes.NewPriceSnapshotItem(oracleutils.MicroAtomDenom, oracletypes.OracleExchangeRate{ExchangeRate: sdk.NewDec(20), LastUpdate: sdk.NewInt(10)}),
-	}}
-	testWrapper.App.OracleKeeper.AddPriceSnapshot(testWrapper.Ctx, priceSnapshot)
-	testWrapper.App.OracleKeeper.SetVoteTarget(testWrapper.Ctx, oracleutils.MicroAtomDenom)
-
-	testWrapper.Ctx = testWrapper.Ctx.WithBlockHeight(14).WithBlockTime(time.Unix(3700, 0))
-
-	res, err := customQuerier(testWrapper.Ctx, rawQuery)
-	require.NoError(t, err)
-
-	var parsedRes2 oracletypes.QueryTwapsResponse
-	err = json.Unmarshal(res, &parsedRes2)
-	require.NoError(t, err)
-	// should be 100 isntead of 200 because thats the oldest data timestamp we have
-	require.Equal(t, oracletypes.QueryTwapsResponse{OracleTwaps: oracletypes.OracleTwaps{
-		oracletypes.OracleTwap{Denom: oracleutils.MicroAtomDenom, Twap: sdk.NewDec(20), LookbackSeconds: 100},
-	}}, parsedRes2)
-}
-
-func TestWasmGetOracleTwapsErrorHandling(t *testing.T) {
-	testWrapper, customQuerier := SetupWasmbindingTest(t)
-
-	req := oraclebinding.SeiOracleQuery{OracleTwaps: &oracletypes.QueryTwapsRequest{LookbackSeconds: 200}}
-	queryData, err := json.Marshal(req)
-	require.NoError(t, err)
-	query := wasmbinding.SeiQueryWrapper{Route: wasmbinding.OracleRoute, QueryData: queryData}
-	rawQuery, err := json.Marshal(query)
-	require.NoError(t, err)
-
-	_, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.Error(t, err)
-	require.Equal(t, err, oracletypes.ErrNoTwapData)
-
-	req = oraclebinding.SeiOracleQuery{OracleTwaps: &oracletypes.QueryTwapsRequest{LookbackSeconds: 3601}}
-	queryData, err = json.Marshal(req)
-	require.NoError(t, err)
-	query = wasmbinding.SeiQueryWrapper{Route: wasmbinding.OracleRoute, QueryData: queryData}
-	rawQuery, err = json.Marshal(query)
-	require.NoError(t, err)
-
-	_, err = customQuerier(testWrapper.Ctx, rawQuery)
-	require.Error(t, err)
-	require.Equal(t, err, oracletypes.ErrInvalidTwapLookback)
 }
 
 func TestWasmGetEpoch(t *testing.T) {

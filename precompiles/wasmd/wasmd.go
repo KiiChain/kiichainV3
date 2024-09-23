@@ -152,7 +152,7 @@ func (p PrecompileExecutor) instantiate(ctx sdk.Context, method *abi.Method, cal
 		rerr = err
 		return
 	}
-	coinsValue := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUseiToSweiMultiplier).BigInt()
+	coinsValue := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUkiiToSweiMultiplier).BigInt()
 	if (value == nil && coinsValue.Sign() == 1) || (value != nil && coinsValue.Cmp(value) != 0) {
 		rerr = errors.New("coin amount must equal value specified")
 		return
@@ -234,7 +234,7 @@ func (p PrecompileExecutor) executeBatch(ctx sdk.Context, method *abi.Method, ca
 			rerr = err
 			return
 		}
-		messageAmount := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUseiToSweiMultiplier).BigInt()
+		messageAmount := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUkiiToSweiMultiplier).BigInt()
 		validateValue.Add(validateValue, messageAmount)
 	}
 	// if validateValue is greater than zero, then value must be provided, and they must be equal
@@ -372,7 +372,7 @@ func (p PrecompileExecutor) execute(ctx sdk.Context, method *abi.Method, caller 
 		rerr = err
 		return
 	}
-	coinsValue := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUseiToSweiMultiplier).BigInt()
+	coinsValue := coins.AmountOf(sdk.MustGetBaseDenom()).Mul(state.SdkUkiiToSweiMultiplier).BigInt()
 	if (value == nil && coinsValue.Sign() == 1) || (value != nil && coinsValue.Cmp(value) != 0) {
 		rerr = errors.New("coin amount must equal value specified")
 		return

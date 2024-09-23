@@ -1,5 +1,5 @@
 syntax = "proto3";
-package kiichain.kiichainV3.evm;
+package evm;
 
 import "google/api/annotations.proto";
 import "evm/enums.proto";
