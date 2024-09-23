@@ -8,7 +8,6 @@ import (
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
 	"github.com/KiiChain/kiichainV3/utils"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -64,11 +63,6 @@ type AccountKeeper interface {
 	SetAccount(ctx sdk.Context, acc authtypes.AccountI)
 	RemoveAccount(ctx sdk.Context, acc authtypes.AccountI)
 	NewAccountWithAddress(ctx sdk.Context, addr sdk.AccAddress) authtypes.AccountI
-}
-
-type OracleKeeper interface {
-	IterateBaseExchangeRates(ctx sdk.Context, handler func(denom string, exchangeRate oracletypes.OracleExchangeRate) (stop bool))
-	CalculateTwaps(ctx sdk.Context, lookbackSeconds uint64) (oracletypes.OracleTwaps, error)
 }
 
 type WasmdKeeper interface {

@@ -6,7 +6,6 @@ import (
 
 	aclutils "github.com/KiiChain/kiichainV3/aclmapping/utils"
 	utils "github.com/KiiChain/kiichainV3/aclmapping/utils"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -108,23 +107,6 @@ func TestMsgBankSendAclOps(t *testing.T) {
 			require.Empty(t, missing)
 		})
 	}
-}
-
-func TestGeneratorInvalidMessageTypes(t *testing.T) {
-	accs := authtypes.GenesisAccounts{}
-	balances := []types.Balance{}
-
-	app := simapp.SetupWithGenesisAccounts(accs, balances...)
-	ctx := app.BaseApp.NewContext(false, tmproto.Header{})
-
-	oracleVote := oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1usei",
-		Feeder:        "test",
-		Validator:     "validator",
-	}
-
-	_, err := MsgSendDependencyGenerator(app.AccessControlKeeper, ctx, &oracleVote)
-	require.Error(t, err)
 }
 
 func TestMsgBeginBankSendGenerator(t *testing.T) {

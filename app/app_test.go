@@ -3,7 +3,6 @@ package app_test
 import (
 	"context"
 	"encoding/hex"
-	"fmt"
 	"math"
 	"math/big"
 	"reflect"
@@ -21,7 +20,6 @@ import (
 	"github.com/KiiChain/kiichainV3/x/evm/config"
 	evmtypes "github.com/KiiChain/kiichainV3/x/evm/types"
 	"github.com/KiiChain/kiichainV3/x/evm/types/ethtx"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkacltypes "github.com/cosmos/cosmos-sdk/types/accesscontrol"
@@ -130,12 +128,6 @@ func TestPartitionPrioritizedTxs(t *testing.T) {
 	account := sdk.AccAddress(valPub.Address()).String()
 	validator := sdk.ValAddress(valPub.Address()).String()
 
-	oracleMsg := &oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1.2uatom",
-		Feeder:        account,
-		Validator:     validator,
-	}
-
 	otherMsg := &stakingtypes.MsgDelegate{
 		DelegatorAddress: account,
 		ValidatorAddress: validator,
@@ -143,40 +135,23 @@ func TestPartitionPrioritizedTxs(t *testing.T) {
 	}
 
 	txEncoder := app.MakeEncodingConfig().TxConfig.TxEncoder()
-	oracleTxBuilder := app.MakeEncodingConfig().TxConfig.NewTxBuilder()
 	otherTxBuilder := app.MakeEncodingConfig().TxConfig.NewTxBuilder()
 	mixedTxBuilder := app.MakeEncodingConfig().TxConfig.NewTxBuilder()
 
-	err := oracleTxBuilder.SetMsgs(oracleMsg)
-	require.NoError(t, err)
-	oracleTx, err := txEncoder(oracleTxBuilder.GetTx())
-	require.NoError(t, err)
-
-	err = otherTxBuilder.SetMsgs(otherMsg)
+	err := otherTxBuilder.SetMsgs(otherMsg)
 	require.NoError(t, err)
 	otherTx, err := txEncoder(otherTxBuilder.GetTx())
 	require.NoError(t, err)
 
-	// this should be treated as non-oracle vote
-	err = mixedTxBuilder.SetMsgs([]sdk.Msg{oracleMsg, otherMsg}...)
-	require.NoError(t, err)
-	mixedTx, err := txEncoder(mixedTxBuilder.GetTx())
-	require.NoError(t, err)
-
 	txs := [][]byte{
-		oracleTx,
 		otherTx,
-		mixedTx,
 	}
 	typedTxs := []sdk.Tx{
-		oracleTxBuilder.GetTx(),
 		otherTxBuilder.GetTx(),
 		mixedTxBuilder.GetTx(),
 	}
 
 	prioritizedTxs, otherTxs, prioritizedTypedTxs, otherTypedTxs, prioIdxs, otherIdxs := testWrapper.App.PartitionPrioritizedTxs(testWrapper.Ctx, txs, typedTxs)
-	require.Equal(t, [][]byte{oracleTx}, prioritizedTxs)
-	require.Equal(t, [][]byte{otherTx, mixedTx}, otherTxs)
 	require.Equal(t, []int{0}, prioIdxs)
 	require.Equal(t, []int{1, 2}, otherIdxs)
 	require.Equal(t, 1, len(prioritizedTypedTxs))
@@ -184,109 +159,17 @@ func TestPartitionPrioritizedTxs(t *testing.T) {
 
 	diffOrderTxs := [][]byte{
 		otherTx,
-		oracleTx,
-		mixedTx,
 	}
 	differOrderTypedTxs := []sdk.Tx{
 		otherTxBuilder.GetTx(),
-		oracleTxBuilder.GetTx(),
 		mixedTxBuilder.GetTx(),
 	}
 
 	prioritizedTxs, otherTxs, prioritizedTypedTxs, otherTypedTxs, prioIdxs, otherIdxs = testWrapper.App.PartitionPrioritizedTxs(testWrapper.Ctx, diffOrderTxs, differOrderTypedTxs)
-	require.Equal(t, [][]byte{oracleTx}, prioritizedTxs)
-	require.Equal(t, [][]byte{otherTx, mixedTx}, otherTxs)
 	require.Equal(t, []int{1}, prioIdxs)
 	require.Equal(t, []int{0, 2}, otherIdxs)
 	require.Equal(t, 1, len(prioritizedTypedTxs))
 	require.Equal(t, 2, len(otherTypedTxs))
-}
-
-func TestProcessOracleAndOtherTxsSuccess(t *testing.T) {
-	tm := time.Now().UTC()
-	valPub := secp256k1.GenPrivKey().PubKey()
-	secondAcc := secp256k1.GenPrivKey().PubKey()
-
-	testWrapper := app.NewTestWrapper(t, tm, valPub, false)
-
-	account := sdk.AccAddress(valPub.Address()).String()
-	account2 := sdk.AccAddress(secondAcc.Address()).String()
-	validator := sdk.ValAddress(valPub.Address()).String()
-
-	oracleMsg := &oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1.2uatom",
-		Feeder:        account,
-		Validator:     validator,
-	}
-
-	otherMsg := &banktypes.MsgSend{
-		FromAddress: account,
-		ToAddress:   account2,
-		Amount:      sdk.NewCoins(sdk.NewInt64Coin("ukii", 2)),
-	}
-
-	oracleTxBuilder := app.MakeEncodingConfig().TxConfig.NewTxBuilder()
-	otherTxBuilder := app.MakeEncodingConfig().TxConfig.NewTxBuilder()
-	txEncoder := app.MakeEncodingConfig().TxConfig.TxEncoder()
-
-	err := oracleTxBuilder.SetMsgs(oracleMsg)
-	require.NoError(t, err)
-	oracleTxBuilder.SetGasLimit(200000)
-	oracleTxBuilder.SetFeeAmount(sdk.NewCoins(sdk.NewInt64Coin("ukii", 20000)))
-	oracleTx, err := txEncoder(oracleTxBuilder.GetTx())
-	require.NoError(t, err)
-
-	err = otherTxBuilder.SetMsgs(otherMsg)
-	require.NoError(t, err)
-	otherTxBuilder.SetGasLimit(100000)
-	otherTxBuilder.SetFeeAmount(sdk.NewCoins(sdk.NewInt64Coin("ukii", 10000)))
-	otherTx, err := txEncoder(otherTxBuilder.GetTx())
-	require.NoError(t, err)
-
-	txs := [][]byte{
-		oracleTx,
-		otherTx,
-	}
-
-	req := &abci.RequestFinalizeBlock{
-		Height: 1,
-	}
-	_, txResults, _, _ := testWrapper.App.ProcessBlock(
-		testWrapper.Ctx.WithBlockHeight(
-			1,
-		),
-		txs,
-		req,
-		req.DecidedLastCommit,
-	)
-	fmt.Println("txResults1", txResults)
-
-	require.Equal(t, 2, len(txResults))
-	require.Equal(t, uint32(3), txResults[0].Code)
-	require.Equal(t, uint32(5), txResults[1].Code)
-
-	diffOrderTxs := [][]byte{
-		otherTx,
-		oracleTx,
-	}
-
-	req = &abci.RequestFinalizeBlock{
-		Height: 1,
-	}
-	_, txResults2, _, _ := testWrapper.App.ProcessBlock(
-		testWrapper.Ctx.WithBlockHeight(
-			1,
-		),
-		diffOrderTxs,
-		req,
-		req.DecidedLastCommit,
-	)
-	fmt.Println("txResults2", txResults2)
-
-	require.Equal(t, 2, len(txResults2))
-	// opposite ordering due to true index ordering
-	require.Equal(t, uint32(5), txResults2[0].Code)
-	require.Equal(t, uint32(3), txResults2[1].Code)
 }
 
 func TestInvalidProposalWithExcessiveGasWanted(t *testing.T) {

@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	oracletypes "github.com/KiiChain/kiichainV3/x/oracle/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -23,23 +22,6 @@ func TestWasmDependencyGenerator(t *testing.T) {
 	// check that bank send generator is in the map
 	_, ok := wasmDependencyGenerator[acltypes.GenerateMessageKey(&wasmtypes.MsgExecuteContract{})]
 	require.True(t, ok)
-}
-
-func TestGeneratorInvalidMessageTypes(t *testing.T) {
-	accs := authtypes.GenesisAccounts{}
-	balances := []types.Balance{}
-
-	app := simapp.SetupWithGenesisAccounts(accs, balances...)
-	ctx := app.BaseApp.NewContext(false, tmproto.Header{})
-
-	oracleVote := oracletypes.MsgAggregateExchangeRateVote{
-		ExchangeRates: "1usei",
-		Feeder:        "test",
-		Validator:     "validator",
-	}
-
-	_, err := NewWasmDependencyGenerator().WasmExecuteContractGenerator(app.AccessControlKeeper, ctx, &oracleVote)
-	require.Error(t, err)
 }
 
 func TestMsgBeginWasmExecuteGenerator(t *testing.T) {

@@ -59,7 +59,7 @@ func GetTxCmd() *cobra.Command {
 	cmd.AddCommand(CmdSend())
 	cmd.AddCommand(CmdDeployContract())
 	cmd.AddCommand(CmdCallContract())
-	cmd.AddCommand(CmdDeployWSEI())
+	cmd.AddCommand(CmdDeployWKII())
 	cmd.AddCommand(CmdERC20Send())
 	cmd.AddCommand(CmdCallPrecompile())
 	cmd.AddCommand(NativeSendTxCmd())

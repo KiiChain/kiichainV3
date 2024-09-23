@@ -82,6 +82,7 @@ func TransactionDependencyGenerator(_ aclkeeper.Keeper, evmKeeper evmkeeper.Keep
 	}
 
 	evmAddr := evmMsg.Derived.SenderEVMAddr
+	accAddr := sdk.AccAddress(evmAddr.Bytes())
 	return append(ops, []sdkacltypes.AccessOperation{
 		{
 			AccessType:         sdkacltypes.AccessType_READ,
@@ -106,7 +107,7 @@ func TransactionDependencyGenerator(_ aclkeeper.Keeper, evmKeeper evmkeeper.Keep
 		{
 			AccessType:         sdkacltypes.AccessType_READ,
 			ResourceType:       sdkacltypes.ResourceType_KV_EVM_E2S,
-			IdentifierTemplate: hex.EncodeToString(evmtypes.KiiAddressToEVMAddressKey(evmAddr)),
+			IdentifierTemplate: hex.EncodeToString(evmtypes.KiiAddressToEVMAddressKey(accAddr)),
 		},
 		{
 			AccessType:         sdkacltypes.AccessType_READ,
