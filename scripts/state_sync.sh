@@ -31,17 +31,17 @@ fi
 mkdir $HOME/key_backup
 printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | kiichaind keys export $KEY > $HOME/key_backup/key
 cp $HOME/.kiichain/config/priv_validator_key.json $HOME/key_backup
-cp $HOME/.sei/data/priv_validator_state.json $HOME/key_backup
+cp $HOME/.kiichain/data/priv_validator_state.json $HOME/key_backup
 mkdir $HOME/.sei_backup
 mv $HOME/.kiichain/config $HOME/.sei_backup
-mv $HOME/.sei/data $HOME/.sei_backup
-mv $HOME/.sei/wasm $HOME/.sei_backup
-cd $HOME/.sei && ls | grep -xv "cosmovisor" | xargs rm -rf
+mv $HOME/.kiichain/data $HOME/.sei_backup
+mv $HOME/.kiichain/wasm $HOME/.sei_backup
+cd $HOME/.kiichain && ls | grep -xv "cosmovisor" | xargs rm -rf
 kiichaind tendermint unsafe-reset-all
 kiichaind init --chain-id $CHAIN_ID $MONIKER
 printf ""$PASSWORD"\n"$PASSWORD"\n"$PASSWORD"\n" | kiichaind keys import $KEY $HOME/key_backup/key
 cp $HOME/key_backup/priv_validator_key.json $HOME/.kiichain/config/
-cp $HOME/key_backup/priv_validator_state.json $HOME/.sei/data/
+cp $HOME/key_backup/priv_validator_state.json $HOME/.kiichain/data/
 LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)

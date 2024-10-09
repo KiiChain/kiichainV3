@@ -95,7 +95,7 @@ for test_path in $block_tests; do
     echo "Running block test: $test_path"
     echo "test name: ${test_name}_Cancun"
     echo -e "\n*********************************************************\n"
-    rm -r ~/.sei || true
+    rm -r ~/.kiichain || true
     NO_RUN=1 ./scripts/initialize_local_chain.sh
     kiichaind blocktest --block-test $test_path --test-name "${test_name}_Cancun"
 done
