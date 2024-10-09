@@ -18,9 +18,9 @@ kiichaind version # Uncomment the below line if there are any dependency issues
 # ldd build/kiichaind
 
 # Initialize validator node
-MONIKER="sei-node-$NODE_ID"
+MONIKER="kiichain-node-$NODE_ID"
 
-kiichaind init "$MONIKER" --chain-id sei >/dev/null 2>&1
+kiichaind init "$MONIKER" --chain-id kiichain >/dev/null 2>&1
 
 # Copy configs
 ORACLE_CONFIG_FILE="build/generated/node_$NODE_ID/price_feeder_config.toml"
@@ -49,7 +49,7 @@ echo "$GENESIS_ACCOUNT_ADDRESS" >> build/generated/genesis_accounts.txt
 kiichaind add-genesis-account "$GENESIS_ACCOUNT_ADDRESS" 10000000usei,10000000uusdc,10000000uatom
 
 # Create gentx
-printf "12345678\n" | kiichaind gentx "$ACCOUNT_NAME" 10000000usei --chain-id sei
+printf "12345678\n" | kiichaind gentx "$ACCOUNT_NAME" 10000000usei --chain-id kiichain
 cp ~/.kiichain/config/gentx/* build/generated/gentx/
 
 # Creating some testing accounts

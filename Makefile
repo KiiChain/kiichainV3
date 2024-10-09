@@ -1,7 +1,8 @@
 #!/usr/bin/make -f
+.DEFAULT_GOAL := proto-all
 
-VERSION := $(shell echo $(shell git describe --tags))
-COMMIT := $(shell git log -1 --format='%H')
+VERSION := $(shell git describe --tags 2>/dev/null || echo "v0.0.0")
+COMMIT := $(shell git log -1 --format='%H' 2>/dev/null || echo "unknown")
 DOCKER := $(shell which docker)
 
 BUILDDIR ?= $(CURDIR)/build
@@ -47,11 +48,11 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=sei \
-			-X github.com/cosmos/cosmos-sdk/version.ServerName=kiichaind \
-			-X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
-			-X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-			-X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=kiichain \
+	-X github.com/cosmos/cosmos-sdk/version.AppName=kiichaind \
+	-X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
+	-X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
+	-X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 
 ifeq ($(LINK_STATICALLY),true)
 	ldflags += -linkmode=external -extldflags "-Wl,-z,muldefs -static"
@@ -75,8 +76,12 @@ protoImage=$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace $(pro
 
 all: lint install
 
-install: go.sum
-		go install $(BUILD_FLAGS) ./cmd/kiichaind
+install:
+	# @echo "--> ensure dependencies have not been modified"
+	# @go mod verify
+	# @go mod tidy
+	# @echo "--> installing kiichaind"
+	@go install $(BUILD_FLAGS) -mod=readonly ./cmd/kiichaind
 
 install-with-race-detector: go.sum
 		go install -race $(BUILD_FLAGS) ./cmd/kiichaind
@@ -113,8 +118,9 @@ build-loadtest:
 
 proto-gen:
 	@echo "Generating protobuf files..."
-	@$(protoImage) sh ./scripts/protocgen.sh
+	@$(protoImage) sh ./scripts/protogen.sh
 	@go mod tidy
+.PHONY: proto-gen
 
 ###############################################################################
 ###                       Local testing using docker container              ###
@@ -153,7 +159,7 @@ run-local-node: kill-sei-node build-docker-node
 	--name sei-node \
 	--network host \
 	--user="$(shell id -u):$(shell id -g)" \
-	-v $(PROJECT_HOME):/sei-protocol/kii-chain:Z \
+	-v $(PROJECT_HOME):/kiiChain/kii-chain:Z \
 	-v $(GO_PKG_PATH)/mod:/root/go/pkg/mod:Z \
 	-v $(shell go env GOCACHE):/root/.cache/go-build:Z \
 	--platform linux/x86_64 \

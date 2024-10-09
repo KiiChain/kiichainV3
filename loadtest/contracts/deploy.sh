@@ -8,7 +8,7 @@ echo
 echo -n seid binary:
 read seidbin
 echo
-echo -n sei-chain directory:
+echo -n kiichain-chain directory:
 read seihome
 echo
 

@@ -8,8 +8,8 @@ kiichaind version # Uncomment the below line if there are any dependency issues
 # ldd build/kiichaind
 
 # Initialize validator node
-MONIKER="sei-rpc-node"
-kiichaind init --chain-id sei "$MONIKER"
+MONIKER="kiichain-rpc-node"
+kiichaind init --chain-id kiichain "$MONIKER"
 
 # Copy configs
 cp docker/rpcnode/config/app.toml ~/.kiichain/config/app.toml

@@ -10,7 +10,7 @@ echo $chainid
 echo $seihome
 
 # Deploy all contracts
-echo "Deploying sei tester contract"
+echo "Deploying kiichain tester contract"
 
 cd $seihome/loadtest/contracts
 # store
